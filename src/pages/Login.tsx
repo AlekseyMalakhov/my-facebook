@@ -1,8 +1,6 @@
-/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 
-const container = {
-    margin: "10px",
-};
+const container = css({});
 
 export default function Login() {
     return <div css={container}>Hello it's page</div>;
