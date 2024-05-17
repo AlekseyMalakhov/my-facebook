@@ -10,6 +10,7 @@ const main = css({
     backgroundColor: "#f0f2f5",
     flex: 1,
 });
+const hello = css({});
 const footer = css({
     display: "flex",
     justifyContent: "center",
@@ -18,7 +19,6 @@ const footer = css({
 const footerContent = css({
     display: "flex",
     flexDirection: "column",
-    height: "160px",
     color: "#8a8d91",
     fontSize: "12px",
     maxWidth: "980px",
@@ -38,6 +38,11 @@ const line = css({
     borderBottom: "1px solid #dddfe2",
     paddingTop: "8px",
     marginBottom: "8px",
+});
+const copyRight = css({
+    margin: "20px 0px",
+    fontSize: "11px",
+    color: "#737373",
 });
 
 const langs = [
@@ -92,7 +97,9 @@ const links = [
 export default function Login() {
     return (
         <div css={container}>
-            <main css={main}>hi all</main>
+            <main css={main}>
+                <div css={hello}></div>
+            </main>
             <footer css={footer}>
                 <div css={footerContent}>
                     <ul css={langsList}>
@@ -110,6 +117,7 @@ export default function Login() {
                             </li>
                         ))}
                     </ul>
+                    <div css={copyRight}>Meta © 2024</div>
                 </div>
             </footer>
         </div>
