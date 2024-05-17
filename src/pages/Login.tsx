@@ -24,8 +24,12 @@ const footerContent = css({
     maxWidth: "980px",
 });
 const langsList = css({
+    marginBlock: "0px",
+    marginInline: "0px",
+    paddingInline: "0px",
+    listStyleType: "none",
     paddingTop: "20px",
-    span: {
+    li: {
         paddingRight: "10px",
         display: "inline-block",
     },
@@ -91,21 +95,21 @@ export default function Login() {
             <main css={main}>hi all</main>
             <footer css={footer}>
                 <div css={footerContent}>
-                    <div css={langsList}>
+                    <ul css={langsList}>
                         {langs.map((item) => (
-                            <span key={item} style={{ lineHeight: 1.6 }}>
+                            <li key={item} style={{ lineHeight: 1.6 }}>
                                 {item}
-                            </span>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                     <div css={line}></div>
-                    <div css={langsList}>
+                    <ul css={langsList}>
                         {links.map((item) => (
-                            <span key={item} style={{ lineHeight: 1.6 }}>
+                            <li key={item} style={{ lineHeight: 1.6 }}>
                                 {item}
-                            </span>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             </footer>
         </div>
