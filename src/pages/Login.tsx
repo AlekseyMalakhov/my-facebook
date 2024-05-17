@@ -7,10 +7,13 @@ const container = css({
 });
 const main = css({
     display: "flex",
+    justifyContent: "space-evenly",
+    alignItems: "center",
     backgroundColor: "#f0f2f5",
     flex: 1,
 });
 const hello = css({});
+const loginForm = css({});
 const footer = css({
     display: "flex",
     justifyContent: "center",
@@ -98,7 +101,10 @@ export default function Login() {
     return (
         <div css={container}>
             <main css={main}>
-                <div css={hello}></div>
+                <div css={hello}>
+                    <img src="facebook.svg" height={106} />
+                </div>
+                <div css={loginForm}>Login Form</div>
             </main>
             <footer css={footer}>
                 <div css={footerContent}>
