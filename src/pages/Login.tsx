@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import LoginForm from "../widgets/LoginForm";
 
 const container = css({
     display: "flex",
@@ -25,8 +26,6 @@ const helloText = css({
     paddingBottom: "20px",
     color: "#1c1e21",
 });
-
-const loginForm = css({});
 
 const footer = css({
     display: "flex",
@@ -123,7 +122,7 @@ export default function Login() {
                     <img src="facebook.svg" height={106} style={{ marginLeft: "-28px" }} />
                     <h2 css={helloText}>Connect with friends and the world around you on Facebook.</h2>
                 </div>
-                <div css={loginForm}>Login Form</div>
+                <LoginForm />
             </main>
             <footer css={footer}>
                 <div css={footerContent}>
