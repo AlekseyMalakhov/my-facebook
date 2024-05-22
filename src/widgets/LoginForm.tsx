@@ -3,6 +3,8 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
+import { useState } from "react";
+import SignUpForm from "./SignUpForm";
 
 const paper = css({
     width: "396px",
@@ -48,6 +50,12 @@ const createButton = css({
 });
 
 export default function LoginForm() {
+    const [showSignUp, setShowSignUp] = useState(false);
+
+    const closeSignUp = () => {
+        setShowSignUp(false);
+    };
+
     return (
         <div>
             <Paper css={paper} elevation={3}>
@@ -63,7 +71,7 @@ export default function LoginForm() {
                         </Link>
                     </div>
                     <div css={separator}></div>
-                    <Button variant="contained" css={createButton}>
+                    <Button variant="contained" css={createButton} onClick={() => setShowSignUp(true)}>
                         Create new account
                     </Button>
                 </div>
@@ -74,6 +82,7 @@ export default function LoginForm() {
                 </Link>{" "}
                 for a celebrity, brand or business.
             </div>
+            <SignUpForm open={showSignUp} handleClose={closeSignUp} />
         </div>
     );
 }
