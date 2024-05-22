@@ -9,14 +9,22 @@ const container = css({
 
 const main = css({
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f0f2f5",
-    flex: 1,
     minHeight: "720px",
 });
 
-const hello = css({});
+const container2 = css({
+    display: "flex",
+    justifyContent: "space-between",
+    flex: 1,
+    maxWidth: "980px",
+});
+
+const hello = css({
+    marginTop: "40px",
+});
 
 const helloText = css({
     width: "500px",
@@ -118,11 +126,13 @@ export default function Login() {
     return (
         <div css={container}>
             <main css={main}>
-                <div css={hello}>
-                    <img src="facebook.svg" height={106} style={{ marginLeft: "-28px" }} />
-                    <h2 css={helloText}>Connect with friends and the world around you on Facebook.</h2>
+                <div css={container2}>
+                    <div css={hello}>
+                        <img src="facebook.svg" height={106} style={{ marginLeft: "-28px" }} />
+                        <h2 css={helloText}>Connect with friends and the world around you on Facebook.</h2>
+                    </div>
+                    <LoginForm />
                 </div>
-                <LoginForm />
             </main>
             <footer css={footer}>
                 <div css={footerContent}>
