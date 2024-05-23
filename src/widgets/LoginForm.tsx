@@ -50,7 +50,7 @@ const createButton = css({
 });
 
 export default function LoginForm() {
-    const [showSignUp, setShowSignUp] = useState(false);
+    const [showSignUp, setShowSignUp] = useState(true);
 
     const closeSignUp = () => {
         setShowSignUp(false);
@@ -60,8 +60,8 @@ export default function LoginForm() {
         <div>
             <Paper css={paper} elevation={3}>
                 <div css={container}>
-                    <TextField id="outlined-basic" label="Email or phone number" variant="outlined" fullWidth style={{ paddingBottom: "12px" }} />
-                    <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth type="password" style={{ paddingBottom: "12px" }} />
+                    <TextField label="Email or phone number" variant="outlined" fullWidth style={{ paddingBottom: "12px" }} />
+                    <TextField label="Password" variant="outlined" fullWidth type="password" style={{ paddingBottom: "12px" }} />
                     <Button variant="contained" fullWidth css={loginButton}>
                         Log In
                     </Button>
