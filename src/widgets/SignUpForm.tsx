@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import LoginSelector from "../features/LoginSelector";
 import { SelectChangeEvent } from "@mui/material/Select";
+import ShowTooltipButton from "../features/ShowTooltipButton";
 
 type Props = {
     handleClose: () => void;
@@ -41,7 +42,8 @@ const birthday = css({
 const title = css({
     fontSize: "12px",
     color: "#606770",
-    lineHeight: "20px",
+    display: "flex",
+    alignItems: "center",
 });
 
 const selectors = css({
@@ -107,7 +109,10 @@ export default function SignUpForm({ handleClose, open }: Props) {
                     <TextField label="Mobile number or email" variant="outlined" size="small" fullWidth style={{ marginBottom: "10px" }} />
                     <TextField label="New password" variant="outlined" size="small" fullWidth type="password" />
                     <div css={birthday}>
-                        <div css={title}>Birthday</div>
+                        <div css={title}>
+                            <span style={{ paddingTop: "4px" }}>Birthday</span>
+                            <ShowTooltipButton />
+                        </div>
                         <div css={selectors}>
                             <LoginSelector label="Month" handleChange={changeMonth} items={months} value={month} />
                             <LoginSelector label="Day" handleChange={changeDay} items={days} value={day} />
