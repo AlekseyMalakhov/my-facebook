@@ -8,6 +8,7 @@ import ShowTooltipButton from "../features/ShowTooltipButton";
 import Popover from "@mui/material/Popover";
 import Link from "@mui/material/Link";
 import CrossCloseButton from "../features/CrossCloseButton";
+import LoginSelectGender, { Gender } from "../features/LoginSelectGender";
 
 type Props = {
     handleClose: (event: object, reason: string) => void;
@@ -84,6 +85,7 @@ export default function SignUpForm({ handleClose, open }: Props) {
     const [month, setMonth] = useState(months[0]);
     const [day, setDay] = useState(days[0]);
     const [year, setYears] = useState(years[0]);
+    const [gender, setGender] = useState<Gender>("female");
     const [showHelpBirthday, setShowHelpBirthday] = useState(false);
     const [showHelpGender, setShowHelpGender] = useState(false);
 
@@ -161,9 +163,7 @@ export default function SignUpForm({ handleClose, open }: Props) {
                             <ShowTooltipButton onClick={toggleHelpGender} />
                         </div>
                         <div css={selectors}>
-                            <LoginSelector label="Month" handleChange={changeMonth} items={months} value={month} />
-                            <LoginSelector label="Day" handleChange={changeDay} items={days} value={day} />
-                            <LoginSelector label="Year" handleChange={changeYear} items={years} value={year} />
+                            <LoginSelectGender value={gender} handleChange={setGender} />
                         </div>
                     </div>
                 </div>
