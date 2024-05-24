@@ -3,7 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
 type Props = {
-    onClick: () => void;
+    onClick: (event: object, reason: string) => void;
 };
 
 const container = css({});
@@ -11,7 +11,7 @@ const container = css({});
 export default function CrossCloseButton({ onClick }: Props) {
     return (
         <div css={container}>
-            <IconButton aria-label="close" size="small" onClick={onClick}>
+            <IconButton aria-label="close" size="small" onClick={(e) => onClick(e, "button")}>
                 <CloseIcon sx={{ fontSize: 24 }} />
             </IconButton>
         </div>

@@ -10,7 +10,7 @@ import Link from "@mui/material/Link";
 import CrossCloseButton from "../features/CrossCloseButton";
 
 type Props = {
-    handleClose: () => void;
+    handleClose: (event: object, reason: string) => void;
     open: boolean;
 };
 
@@ -85,8 +85,10 @@ export default function SignUpForm({ handleClose, open }: Props) {
     const [day, setDay] = useState(days[0]);
     const [year, setYears] = useState(years[0]);
     const [showHelpBirthday, setShowHelpBirthday] = useState(false);
+    const [showHelpGender, setShowHelpGender] = useState(false);
 
-    const helpEl = useRef<HTMLDivElement | null>(null);
+    const helpBirthdayEl = useRef<HTMLDivElement | null>(null);
+    const helpGenderEl = useRef<HTMLDivElement | null>(null);
 
     const changeMonth = (e: SelectChangeEvent<string | number>) => {
         if (typeof e.target.value === "string") {
@@ -116,6 +118,14 @@ export default function SignUpForm({ handleClose, open }: Props) {
         }
     };
 
+    const toggleHelpGender = () => {
+        if (showHelpGender) {
+            setShowHelpGender(false);
+        } else {
+            setShowHelpGender(true);
+        }
+    };
+
     return (
         <Dialog onClose={handleClose} open={open}>
             <div css={container}>
@@ -135,9 +145,20 @@ export default function SignUpForm({ handleClose, open }: Props) {
                     <TextField label="Mobile number or email" variant="outlined" size="small" fullWidth style={{ marginBottom: "10px" }} />
                     <TextField label="New password" variant="outlined" size="small" fullWidth type="password" />
                     <div css={birthday}>
-                        <div css={title} ref={helpEl}>
+                        <div css={title} ref={helpBirthdayEl}>
                             <span style={{ paddingTop: "4px" }}>Birthday</span>
                             <ShowTooltipButton onClick={toggleHelpBirthday} />
+                        </div>
+                        <div css={selectors}>
+                            <LoginSelector label="Month" handleChange={changeMonth} items={months} value={month} />
+                            <LoginSelector label="Day" handleChange={changeDay} items={days} value={day} />
+                            <LoginSelector label="Year" handleChange={changeYear} items={years} value={year} />
+                        </div>
+                    </div>
+                    <div css={birthday}>
+                        <div css={title} ref={helpGenderEl}>
+                            <span style={{ paddingTop: "4px" }}>Gender</span>
+                            <ShowTooltipButton onClick={toggleHelpGender} />
                         </div>
                         <div css={selectors}>
                             <LoginSelector label="Month" handleChange={changeMonth} items={months} value={month} />
@@ -148,9 +169,8 @@ export default function SignUpForm({ handleClose, open }: Props) {
                 </div>
             </div>
             <Popover
-                id="help-birthday"
                 open={showHelpBirthday}
-                anchorEl={helpEl.current}
+                anchorEl={helpBirthdayEl.current}
                 onClose={toggleHelpBirthday}
                 anchorOrigin={{
                     vertical: "center",
@@ -168,6 +188,23 @@ export default function SignUpForm({ handleClose, open }: Props) {
                         Privacy Policy
                     </Link>
                     .
+                </div>
+            </Popover>
+            <Popover
+                open={showHelpGender}
+                anchorEl={helpGenderEl.current}
+                onClose={toggleHelpGender}
+                anchorOrigin={{
+                    vertical: "center",
+                    horizontal: "left",
+                }}
+                transformOrigin={{
+                    vertical: "center",
+                    horizontal: "right",
+                }}
+            >
+                <div css={helpText}>
+                    You can change who sees your gender on your profile later. Select Custom to choose another gender, or if you'd rather not say.
                 </div>
             </Popover>
         </Dialog>

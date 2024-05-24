@@ -53,7 +53,6 @@ export default function LoginForm() {
     const [showSignUp, setShowSignUp] = useState(true);
 
     const closeSignUp = (event: object, reason: string) => {
-        //console.log(reason);
         if (reason !== "backdropClick") {
             setShowSignUp(false);
         }
