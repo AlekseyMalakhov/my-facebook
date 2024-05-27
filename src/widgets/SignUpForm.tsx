@@ -9,6 +9,7 @@ import Popover from "@mui/material/Popover";
 import Link from "@mui/material/Link";
 import CrossCloseButton from "../features/CrossCloseButton";
 import LoginSelectGender, { Gender } from "../features/LoginSelectGender";
+import Button from "@mui/material/Button";
 
 type Props = {
     handleClose: (event: object, reason: string) => void;
@@ -65,6 +66,33 @@ const helpText = css({
 const link = css({
     color: "#0866ff",
     fontSize: "13px",
+});
+
+const notification = css({
+    fontSize: "11px",
+    marginTop: "20px",
+});
+
+const signUpButton = css({
+    backgroundColor: "#00a400",
+    height: "36px",
+    fontSize: "18px",
+    padding: "0 32px",
+    "&:hover": {
+        background: "linear-gradient(#79bc64, #578843)",
+    },
+    textTransform: "none",
+    fontWeight: "bold",
+    width: "194px",
+    marginTop: "10px",
+    marginBottom: "10px",
+});
+
+const signUpButtonContainer = css({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "10px",
 });
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -144,8 +172,7 @@ export default function SignUpForm({ handleClose, open }: Props) {
                         <TextField label="First name" variant="outlined" size="small" style={{ width: "194px" }} />
                         <TextField label="Last name" variant="outlined" size="small" style={{ width: "194px" }} />
                     </div>
-                    <TextField label="Mobile number or email" variant="outlined" size="small" fullWidth style={{ marginBottom: "10px" }} />
-                    <TextField label="New password" variant="outlined" size="small" fullWidth type="password" />
+
                     <div css={birthday}>
                         <div css={title} ref={helpBirthdayEl}>
                             <span style={{ paddingTop: "4px" }}>Birthday</span>
@@ -163,6 +190,28 @@ export default function SignUpForm({ handleClose, open }: Props) {
                             <ShowTooltipButton onClick={toggleHelpGender} />
                         </div>
                         <LoginSelectGender value={gender} handleChange={setGender} />
+                    </div>
+                    <TextField
+                        label="Mobile number or email"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        style={{ marginBottom: "10px", marginTop: "10px" }}
+                    />
+                    <TextField label="New password" variant="outlined" size="small" fullWidth type="password" />
+                    <div css={notification}>
+                        <div style={{ marginBottom: "10px" }}>
+                            People who use our service may have uploaded your contact information to Facebook. Learn more
+                        </div>
+                        <div>
+                            By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy. You may receive SMS Notifications from us
+                            and can opt out any time.
+                        </div>
+                    </div>
+                    <div css={signUpButtonContainer}>
+                        <Button variant="contained" css={signUpButton}>
+                            Sign Up
+                        </Button>
                     </div>
                 </div>
             </div>
