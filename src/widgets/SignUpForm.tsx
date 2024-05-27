@@ -162,9 +162,7 @@ export default function SignUpForm({ handleClose, open }: Props) {
                             <span style={{ paddingTop: "4px" }}>Gender</span>
                             <ShowTooltipButton onClick={toggleHelpGender} />
                         </div>
-                        <div css={selectors}>
-                            <LoginSelectGender value={gender} handleChange={setGender} />
-                        </div>
+                        <LoginSelectGender value={gender} handleChange={setGender} />
                     </div>
                 </div>
             </div>
