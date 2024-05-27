@@ -68,9 +68,15 @@ const link = css({
     fontSize: "13px",
 });
 
+const link2 = css({
+    color: "#385898",
+    fontSize: "11px",
+});
+
 const notification = css({
     fontSize: "11px",
     marginTop: "20px",
+    color: "#777",
 });
 
 const signUpButton = css({
@@ -201,11 +207,25 @@ export default function SignUpForm({ handleClose, open }: Props) {
                     <TextField label="New password" variant="outlined" size="small" fullWidth type="password" />
                     <div css={notification}>
                         <div style={{ marginBottom: "10px" }}>
-                            People who use our service may have uploaded your contact information to Facebook. Learn more
+                            <span>People who use our service may have uploaded your contact information to Facebook. </span>
+                            <Link href="#" underline="hover" css={link2}>
+                                Learn more...
+                            </Link>
                         </div>
                         <div>
-                            By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy. You may receive SMS Notifications from us
-                            and can opt out any time.
+                            <span>By clicking Sign Up, you agree to our </span>
+                            <Link href="#" underline="hover" css={link2}>
+                                Terms
+                            </Link>
+                            <span>, </span>
+                            <Link href="#" underline="hover" css={link2}>
+                                Privacy Policy
+                            </Link>
+                            <span> and </span>
+                            <Link href="#" underline="hover" css={link2}>
+                                Cookies Policy
+                            </Link>
+                            <span>. You may receive SMS Notifications from us and can opt out any time.</span>
                         </div>
                     </div>
                     <div css={signUpButtonContainer}>
