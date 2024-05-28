@@ -75,11 +75,12 @@ const resolvers = {
 
 */
 import users from "../mockData";
+import { Resolvers } from "../__generated__/resolvers-types";
 
-const resolvers = {
+const resolvers: Resolvers = {
     Query: {
         user: (parent, args) => {
-            const id = Number(args.id);
+            const id = args.id;
             const user = users.find((u) => u.id === id);
             return user;
         },
@@ -88,7 +89,7 @@ const resolvers = {
     Mutation: {
         addUser: (parent, args) => {
             const u = args.input;
-            const id = Date.now();
+            const id = Date.now().toString();
             const user = { id, ...u };
             users.push(user);
             return user;

@@ -6,11 +6,15 @@
     "type": "module",
     "scripts": {
         "compile": "tsc",
-        "start": "npm run compile && node ./dist/index.js"
+        "start": "npm run compile && node ./dist/index.js",
+        "generate": "graphql-codegen"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@graphql-codegen/cli": "^5.0.2",
+        "@graphql-codegen/typescript": "^4.0.7",
+        "@graphql-codegen/typescript-resolvers": "^4.1.0",
         "@types/node": "^20.12.12",
         "ts-node": "^10.9.2",
         "typescript": "^5.4.5"

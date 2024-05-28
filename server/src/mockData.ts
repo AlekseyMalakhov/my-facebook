@@ -1,18 +1,18 @@
 const users = [
     {
-        id: 1,
+        id: "1",
         name: "Mark",
         surname: "Mark2",
         profession: "Prof 1",
     },
     {
-        id: 2,
+        id: "2",
         name: "Paul",
         surname: "Paul2",
         profession: "Prof 2",
     },
     {
-        id: 3,
+        id: "3",
         name: "Stieve",
         surname: "Stieve2",
         profession: "Prof 3",
