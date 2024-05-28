@@ -17,10 +17,19 @@ export type Scalars = {
 };
 
 export type AddUserInput = {
-  name: Scalars['String']['input'];
-  profession: Scalars['String']['input'];
-  surname: Scalars['String']['input'];
+  birthday: Scalars['String']['input'];
+  first_name: Scalars['String']['input'];
+  gender: Gender;
+  last_name: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  reg_device: RegDeviceInput;
 };
+
+export enum Gender {
+  Female = 'female',
+  Male = 'male',
+  Other = 'other'
+}
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -42,12 +51,30 @@ export type QueryUserArgs = {
   id: Scalars['ID']['input'];
 };
 
+export type RegDevice = {
+  __typename?: 'RegDevice';
+  type: RegDeviceType;
+  value: Scalars['String']['output'];
+};
+
+export type RegDeviceInput = {
+  type: RegDeviceType;
+  value: Scalars['String']['input'];
+};
+
+export enum RegDeviceType {
+  Email = 'email',
+  Phone = 'phone'
+}
+
 export type User = {
   __typename?: 'User';
+  birthday: Scalars['String']['output'];
+  first_name: Scalars['String']['output'];
+  gender: Gender;
   id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
-  profession: Scalars['String']['output'];
-  surname: Scalars['String']['output'];
+  last_name: Scalars['String']['output'];
+  reg_device: RegDevice;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -124,9 +151,13 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = ResolversObject<{
   AddUserInput: AddUserInput;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  Gender: Gender;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
+  RegDevice: ResolverTypeWrapper<RegDevice>;
+  RegDeviceInput: RegDeviceInput;
+  RegDeviceType: RegDeviceType;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   User: ResolverTypeWrapper<User>;
 }>;
@@ -138,6 +169,8 @@ export type ResolversParentTypes = ResolversObject<{
   ID: Scalars['ID']['output'];
   Mutation: {};
   Query: {};
+  RegDevice: RegDevice;
+  RegDeviceInput: RegDeviceInput;
   String: Scalars['String']['output'];
   User: User;
 }>;
@@ -150,17 +183,26 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserArgs, 'id'>>;
 }>;
 
+export type RegDeviceResolvers<ContextType = any, ParentType extends ResolversParentTypes['RegDevice'] = ResolversParentTypes['RegDevice']> = ResolversObject<{
+  type?: Resolver<ResolversTypes['RegDeviceType'], ParentType, ContextType>;
+  value?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = ResolversObject<{
+  birthday?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  first_name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  gender?: Resolver<ResolversTypes['Gender'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  profession?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  surname?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  last_name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  reg_device?: Resolver<ResolversTypes['RegDevice'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type Resolvers<ContextType = any> = ResolversObject<{
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  RegDevice?: RegDeviceResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
 }>;
 

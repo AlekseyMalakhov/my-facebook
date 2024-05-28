@@ -7,8 +7,7 @@
     "scripts": {
         "compile": "tsc",
         "start": "npm run compile && copyfiles -f ./src/schema/schema.graphql ./dist/src/schema && node ./dist/src/index.js",
-        "generate": "graphql-codegen",
-        "check": "copyfiles -f ./src/schema/schema.graphql ./dist/src/schema"
+        "generate": "graphql-codegen"
     },
     "author": "",
     "license": "ISC",

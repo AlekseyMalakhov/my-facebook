@@ -1,22 +1,18 @@
-const users = [
+import { Gender, RegDeviceType, User } from "./__generated__/resolvers-types.js";
+
+const users: User[] = [
     {
         id: "1",
-        name: "Mark",
-        surname: "Mark2",
-        profession: "Prof 1",
-    },
-    {
-        id: "2",
-        name: "Paul",
-        surname: "Paul2",
-        profession: "Prof 2",
-    },
-    {
-        id: "3",
-        name: "Stieve",
-        surname: "Stieve2",
-        profession: "Prof 3",
+        first_name: "Mark",
+        last_name: "Marksman",
+        birthday: "1716904148252",
+        gender: Gender.Male,
+        reg_device: {
+            type: RegDeviceType.Email,
+            value: "lalalal@gmail.com",
+        },
     },
 ];
 
+console.log(Date.now());
 export default users;
