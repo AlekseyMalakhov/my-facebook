@@ -6,8 +6,9 @@
     "type": "module",
     "scripts": {
         "compile": "tsc",
-        "start": "npm run compile && node ./dist/index.js",
-        "generate": "graphql-codegen"
+        "start": "npm run compile && copyfiles -f ./src/schema/schema.graphql ./dist/src/schema && node ./dist/src/index.js",
+        "generate": "graphql-codegen",
+        "check": "copyfiles -f ./src/schema/schema.graphql ./dist/src/schema"
     },
     "author": "",
     "license": "ISC",
@@ -16,6 +17,7 @@
         "@graphql-codegen/typescript": "^4.0.7",
         "@graphql-codegen/typescript-resolvers": "^4.1.0",
         "@types/node": "^20.12.12",
+        "copyfiles": "^2.4.1",
         "ts-node": "^10.9.2",
         "typescript": "^5.4.5"
     },
