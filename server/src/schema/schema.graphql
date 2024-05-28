@@ -1,0 +1,46 @@
+type Query {
+    user(id: ID!): User
+}
+
+type Mutation {
+    addUser(input: AddUserInput!): User
+}
+
+type User {
+    id: ID!
+    first_name: String!
+    last_name: String!
+    birthday: String!
+    gender: Gender!
+    reg_device: RegDevice!
+}
+
+enum Gender {
+    female
+    male
+    other
+}
+
+enum RegDeviceType {
+    phone
+    email
+}
+
+type RegDevice {
+    type: RegDeviceType!
+    value: String!
+}
+
+input RegDeviceInput {
+    type: RegDeviceType!
+    value: String!
+}
+
+input AddUserInput {
+    first_name: String!
+    last_name: String!
+    birthday: String!
+    gender: Gender!
+    reg_device: RegDeviceInput!
+    password: String!
+}

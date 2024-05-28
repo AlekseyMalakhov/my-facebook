@@ -1,0 +1,27 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "compile": "tsc",
+        "start": "npm run compile && copyfiles -f ./src/schema/schema.graphql ./dist/src/schema && node ./dist/src/index.js",
+        "generate": "graphql-codegen"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@graphql-codegen/cli": "^5.0.2",
+        "@graphql-codegen/typescript": "^4.0.7",
+        "@graphql-codegen/typescript-resolvers": "^4.1.0",
+        "@types/node": "^20.12.12",
+        "copyfiles": "^2.4.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "@apollo/server": "^4.10.4",
+        "graphql": "^16.8.1"
+    }
+}
