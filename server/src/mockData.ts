@@ -14,5 +14,4 @@ const users: User[] = [
     },
 ];
 
-console.log(Date.now());
 export default users;
