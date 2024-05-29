@@ -50,7 +50,7 @@ const createButton = css({
 });
 
 export default function LoginForm() {
-    const [showSignUp, setShowSignUp] = useState(true);
+    const [showSignUp, setShowSignUp] = useState(false);
 
     const closeSignUp = (event: object, reason: string) => {
         if (reason !== "backdropClick") {

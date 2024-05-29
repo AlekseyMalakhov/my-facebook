@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/Login";
-import World from "../pages/World";
+
 /*
 const router = createBrowserRouter([
     {
@@ -42,10 +42,6 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Login />,
-    },
-    {
-        path: "/world",
-        element: <World />,
     },
 ]);
 

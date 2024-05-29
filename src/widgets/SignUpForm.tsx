@@ -135,7 +135,7 @@ export default function SignUpForm({ handleClose, open }: Props) {
     const helpBirthdayEl = useRef<HTMLDivElement | null>(null);
     const helpGenderEl = useRef<HTMLDivElement | null>(null);
 
-    const [addUser, { loading }] = useMutation(ADD_USER_MUTATION);
+    const [addUser, { loading }] = useMutation(ADD_USER_MUTATION, { onCompleted: () => handleClose({}, "") });
 
     const changeMonth = (e: SelectChangeEvent<string | number>) => {
         if (typeof e.target.value === "string") {
