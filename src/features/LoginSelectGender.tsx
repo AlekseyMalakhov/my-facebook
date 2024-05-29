@@ -3,7 +3,8 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-export type Gender = "female" | "male" | "other";
+//export type Gender = "female" | "male" | "other";
+import { Gender } from "../gql/graphql";
 type Props = {
     value: Gender;
     handleChange: (value: Gender) => void;
@@ -46,10 +47,17 @@ const formCL = {
 
 export default function LoginSelectGender({ value, handleChange }: Props) {
     const handle = (event: React.ChangeEvent<HTMLInputElement>, val: string) => {
-        //type guard
-        if (val === "female" || val === "male" || val === "other") {
-            handleChange(val);
+        //bug in radio control MUI. Can't pass types directly
+        if (val === "female") {
+            handleChange(Gender.Female);
         }
+        if (val === "male") {
+            handleChange(Gender.Male);
+        }
+        if (val === "other") {
+            handleChange(Gender.Other);
+        }
+        console.log(val);
     };
     return (
         <div css={container}>
@@ -65,13 +73,13 @@ export default function LoginSelectGender({ value, handleChange }: Props) {
                 >
                     <div css={selectors}>
                         <div css={button} style={{ marginLeft: "0px" }}>
-                            <FormControlLabel value="female" control={<Radio />} label="Female" labelPlacement="start" sx={formCL} />
+                            <FormControlLabel value={Gender.Female} control={<Radio />} label="Female" labelPlacement="start" sx={formCL} />
                         </div>
                         <div css={button}>
-                            <FormControlLabel value="male" control={<Radio />} label="Male" labelPlacement="start" sx={formCL} />
+                            <FormControlLabel value={Gender.Male} control={<Radio />} label="Male" labelPlacement="start" sx={formCL} />
                         </div>
                         <div css={button}>
-                            <FormControlLabel value="other" control={<Radio />} label="Other" labelPlacement="start" sx={formCL} />
+                            <FormControlLabel value={Gender.Other} control={<Radio />} label="Other" labelPlacement="start" sx={formCL} />
                         </div>
                     </div>
                 </RadioGroup>

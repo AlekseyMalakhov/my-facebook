@@ -8,8 +8,11 @@ import ShowTooltipButton from "../features/ShowTooltipButton";
 import Popover from "@mui/material/Popover";
 import Link from "@mui/material/Link";
 import CrossCloseButton from "../features/CrossCloseButton";
-import LoginSelectGender, { Gender } from "../features/LoginSelectGender";
+import LoginSelectGender from "../features/LoginSelectGender";
 import Button from "@mui/material/Button";
+import { useMutation } from "@apollo/client";
+import { ADD_USER_MUTATION } from "../shared/api/queries/mutations";
+import { Gender, RegDeviceType } from "../gql/graphql";
 
 type Props = {
     handleClose: (event: object, reason: string) => void;
@@ -119,12 +122,18 @@ export default function SignUpForm({ handleClose, open }: Props) {
     const [month, setMonth] = useState(months[0]);
     const [day, setDay] = useState(days[0]);
     const [year, setYears] = useState(years[0]);
-    const [gender, setGender] = useState<Gender>("female");
+    const [gender, setGender] = useState<Gender>(Gender.Female);
     const [showHelpBirthday, setShowHelpBirthday] = useState(false);
     const [showHelpGender, setShowHelpGender] = useState(false);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [password, setPassword] = useState("");
+    const [regDevice, setRegDevice] = useState("");
 
     const helpBirthdayEl = useRef<HTMLDivElement | null>(null);
     const helpGenderEl = useRef<HTMLDivElement | null>(null);
+
+    const [addUser, { loading }] = useMutation(ADD_USER_MUTATION);
 
     const changeMonth = (e: SelectChangeEvent<string | number>) => {
         if (typeof e.target.value === "string") {
@@ -162,6 +171,38 @@ export default function SignUpForm({ handleClose, open }: Props) {
         }
     };
 
+    const signUp = () => {
+        const monthIndex = months.findIndex((item) => item === month);
+        const birthday = new Date(year, monthIndex, day);
+
+        let regDeviceType = RegDeviceType.Phone;
+        if (regDevice.includes("@")) {
+            regDeviceType = RegDeviceType.Email;
+        }
+
+        const data = {
+            first_name: firstName,
+            last_name: lastName,
+            //GraphQL does not have type for a 64bit integer. We can use Float...but it doesn't have fractional part
+            //so...let it be a String
+            birthday: birthday.valueOf().toString(),
+            gender,
+            reg_device: {
+                type: regDeviceType,
+                value: regDevice,
+            },
+            password,
+        };
+
+        //console.log(data);
+
+        addUser({
+            variables: {
+                input: data,
+            },
+        });
+    };
+
     return (
         <Dialog onClose={handleClose} open={open}>
             <div css={container}>
@@ -175,8 +216,22 @@ export default function SignUpForm({ handleClose, open }: Props) {
                 <div css={separator}></div>
                 <div css={form}>
                     <div css={name}>
-                        <TextField label="First name" variant="outlined" size="small" style={{ width: "194px" }} />
-                        <TextField label="Last name" variant="outlined" size="small" style={{ width: "194px" }} />
+                        <TextField
+                            value={firstName}
+                            label="First name"
+                            variant="outlined"
+                            size="small"
+                            style={{ width: "194px" }}
+                            onChange={(e) => setFirstName(e.target.value)}
+                        />
+                        <TextField
+                            value={lastName}
+                            label="Last name"
+                            variant="outlined"
+                            size="small"
+                            style={{ width: "194px" }}
+                            onChange={(e) => setLastName(e.target.value)}
+                        />
                     </div>
 
                     <div css={birthday}>
@@ -203,8 +258,18 @@ export default function SignUpForm({ handleClose, open }: Props) {
                         size="small"
                         fullWidth
                         style={{ marginBottom: "10px", marginTop: "10px" }}
+                        value={regDevice}
+                        onChange={(e) => setRegDevice(e.target.value)}
                     />
-                    <TextField label="New password" variant="outlined" size="small" fullWidth type="password" />
+                    <TextField
+                        label="New password"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                     <div css={notification}>
                         <div style={{ marginBottom: "10px" }}>
                             <span>People who use our service may have uploaded your contact information to Facebook. </span>
@@ -229,7 +294,7 @@ export default function SignUpForm({ handleClose, open }: Props) {
                         </div>
                     </div>
                     <div css={signUpButtonContainer}>
-                        <Button variant="contained" css={signUpButton}>
+                        <Button variant="contained" css={signUpButton} onClick={signUp}>
                             Sign Up
                         </Button>
                     </div>

@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ApolloProvider } from "@apollo/client";
-import client from "./shared/api/client.tsx";
+import client from "./shared/api/client";
 
 const theme = createTheme({
     components: {

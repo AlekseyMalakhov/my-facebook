@@ -1,14 +1,16 @@
-import { gql } from "@apollo/client";
+import { graphql } from "../../../gql";
 
-export const ADD_USER_MUTATION = gql`
+export const ADD_USER_MUTATION = graphql(`
     mutation AddUser($input: AddUserInput!) {
         addUser(input: $input) {
             first_name
             last_name
             birthday
             gender
-            mobile_number
-            email
+            reg_device {
+                type
+                value
+            }
         }
     }
-`;
+`);
