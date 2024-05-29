@@ -13,6 +13,8 @@ import Button from "@mui/material/Button";
 import { useMutation } from "@apollo/client";
 import { ADD_USER_MUTATION } from "../shared/api/queries/mutations";
 import { Gender, RegDeviceType } from "../gql/graphql";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 type Props = {
     handleClose: (event: object, reason: string) => void;
@@ -194,8 +196,6 @@ export default function SignUpForm({ handleClose, open }: Props) {
             password,
         };
 
-        //console.log(data);
-
         addUser({
             variables: {
                 input: data,
@@ -339,6 +339,11 @@ export default function SignUpForm({ handleClose, open }: Props) {
                     You can change who sees your gender on your profile later. Select Custom to choose another gender, or if you'd rather not say.
                 </div>
             </Popover>
+            {loading ? (
+                <Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={true}>
+                    <CircularProgress color="primary" />
+                </Backdrop>
+            ) : null}
         </Dialog>
     );
 }
