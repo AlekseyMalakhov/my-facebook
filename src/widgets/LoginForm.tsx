@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import SignUpForm from "./SignUpForm";
 import { useMutation } from "@apollo/client";
@@ -37,6 +37,19 @@ const loginButton = css({
 const link = css({
     color: "#0866ff",
     fontSize: "14px",
+    textDecoration: "none",
+    "&:hover": {
+        textDecoration: "underline",
+    },
+});
+
+const link2 = css({
+    color: "black",
+    fontWeight: 600,
+    textDecoration: "none",
+    "&:hover": {
+        textDecoration: "underline",
+    },
 });
 
 const separator = css({
@@ -115,7 +128,7 @@ export default function LoginForm() {
                         Log In
                     </Button>
                     <div style={{ marginTop: "16px", textAlign: "center" }}>
-                        <Link href="#" underline="hover" css={link}>
+                        <Link to="#" css={link}>
                             Forgot password?
                         </Link>
                     </div>
@@ -126,10 +139,10 @@ export default function LoginForm() {
                 </div>
             </Paper>
             <div style={{ marginTop: "28px", fontSize: "14px", textAlign: "center" }}>
-                <Link href="#" underline="hover" style={{ color: "black", fontWeight: 600 }}>
+                <Link to="#" css={link2}>
                     Create a Page
-                </Link>{" "}
-                for a celebrity, brand or business.
+                </Link>
+                <span> for a celebrity, brand or business.</span>
             </div>
             <SignUpForm open={showSignUp} handleClose={closeSignUp} />
             {loading ? (

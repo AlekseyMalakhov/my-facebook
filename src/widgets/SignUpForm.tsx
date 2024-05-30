@@ -6,7 +6,6 @@ import LoginSelector from "../features/LoginSelector";
 import { SelectChangeEvent } from "@mui/material/Select";
 import ShowTooltipButton from "../features/ShowTooltipButton";
 import Popover from "@mui/material/Popover";
-import Link from "@mui/material/Link";
 import CrossCloseButton from "../features/CrossCloseButton";
 import LoginSelectGender from "../features/LoginSelectGender";
 import Button from "@mui/material/Button";
@@ -15,6 +14,7 @@ import { ADD_USER_MUTATION } from "../shared/api/queries/mutations";
 import { Gender, RegDeviceType } from "../gql/graphql";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Link } from "react-router-dom";
 
 type Props = {
     handleClose: (event: object, reason: string) => void;
@@ -71,11 +71,19 @@ const helpText = css({
 const link = css({
     color: "#0866ff",
     fontSize: "13px",
+    textDecoration: "none",
+    "&:hover": {
+        textDecoration: "underline",
+    },
 });
 
 const link2 = css({
     color: "#385898",
     fontSize: "11px",
+    textDecoration: "none",
+    "&:hover": {
+        textDecoration: "underline",
+    },
 });
 
 const notification = css({
@@ -273,21 +281,21 @@ export default function SignUpForm({ handleClose, open }: Props) {
                     <div css={notification}>
                         <div style={{ marginBottom: "10px" }}>
                             <span>People who use our service may have uploaded your contact information to Facebook. </span>
-                            <Link href="#" underline="hover" css={link2}>
+                            <Link to="#" css={link2}>
                                 Learn more...
                             </Link>
                         </div>
                         <div>
                             <span>By clicking Sign Up, you agree to our </span>
-                            <Link href="#" underline="hover" css={link2}>
+                            <Link to="#" css={link2}>
                                 Terms
                             </Link>
                             <span>, </span>
-                            <Link href="#" underline="hover" css={link2}>
+                            <Link to="#" css={link2}>
                                 Privacy Policy
                             </Link>
                             <span> and </span>
-                            <Link href="#" underline="hover" css={link2}>
+                            <Link to="#" css={link2}>
                                 Cookies Policy
                             </Link>
                             <span>. You may receive SMS Notifications from us and can opt out any time.</span>
@@ -314,9 +322,12 @@ export default function SignUpForm({ handleClose, open }: Props) {
                 }}
             >
                 <div css={helpText}>
-                    <b>Providing your birthday</b> helps make sure you get the right Facebook experience for your age. If you want to change who sees
-                    this, go to the About section of your profile. For more details, please visit our{" "}
-                    <Link href="https://www.facebook.com/privacy/explanation" underline="hover" css={link}>
+                    <span>
+                        <b>Providing your birthday</b> helps make sure you get the right Facebook experience for your age. If you want to change who
+                        sees this, go to the About section of your profile.
+                    </span>
+                    <span> For more details, please visit our </span>
+                    <Link to="https://www.facebook.com/privacy/explanation" css={link}>
                         Privacy Policy
                     </Link>
                     .
