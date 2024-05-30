@@ -22,7 +22,6 @@ export const GET_USER_BY_ID = gql(`#graphql
         }
     }
 `);
-*/
 
 import { graphql } from "../../../gql";
 
@@ -35,3 +34,4 @@ export const LOGIN = graphql(`
         }
     }
 `);
+*/

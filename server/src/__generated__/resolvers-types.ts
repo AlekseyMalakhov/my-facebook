@@ -39,6 +39,7 @@ export type LoginUserInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   addUser?: Maybe<User>;
+  login?: Maybe<User>;
 };
 
 
@@ -46,15 +47,14 @@ export type MutationAddUserArgs = {
   input: AddUserInput;
 };
 
-export type Query = {
-  __typename?: 'Query';
-  login?: Maybe<User>;
-  user?: Maybe<User>;
+
+export type MutationLoginArgs = {
+  input?: InputMaybe<LoginUserInput>;
 };
 
-
-export type QueryLoginArgs = {
-  input?: InputMaybe<LoginUserInput>;
+export type Query = {
+  __typename?: 'Query';
+  user?: Maybe<User>;
 };
 
 
@@ -190,10 +190,10 @@ export type ResolversParentTypes = ResolversObject<{
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
   addUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationAddUserArgs, 'input'>>;
+  login?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, Partial<MutationLoginArgs>>;
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  login?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, Partial<QueryLoginArgs>>;
   user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserArgs, 'id'>>;
 }>;
 

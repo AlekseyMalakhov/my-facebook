@@ -14,7 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n    mutation AddUser($input: AddUserInput!) {\n        addUser(input: $input) {\n            first_name\n            last_name\n            birthday\n            gender\n            reg_device {\n                type\n                value\n            }\n        }\n    }\n": types.AddUserDocument,
-    "\n    query Login($input: LoginUserInput!) {\n        login(input: $input) {\n            id\n            first_name\n            last_name\n        }\n    }\n": types.LoginDocument,
+    "\n    mutation Login($input: LoginUserInput!) {\n        login(input: $input) {\n            id\n            first_name\n            last_name\n        }\n    }\n": types.LoginDocument,
 };
 
 /**
@@ -38,7 +38,7 @@ export function graphql(source: "\n    mutation AddUser($input: AddUserInput!) {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n    query Login($input: LoginUserInput!) {\n        login(input: $input) {\n            id\n            first_name\n            last_name\n        }\n    }\n"): (typeof documents)["\n    query Login($input: LoginUserInput!) {\n        login(input: $input) {\n            id\n            first_name\n            last_name\n        }\n    }\n"];
+export function graphql(source: "\n    mutation Login($input: LoginUserInput!) {\n        login(input: $input) {\n            id\n            first_name\n            last_name\n        }\n    }\n"): (typeof documents)["\n    mutation Login($input: LoginUserInput!) {\n        login(input: $input) {\n            id\n            first_name\n            last_name\n        }\n    }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

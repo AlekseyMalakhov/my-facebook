@@ -1,10 +1,10 @@
 type Query {
     user(id: ID!): User
-    login(input: LoginUserInput): User
 }
 
 type Mutation {
     addUser(input: AddUserInput!): User
+    login(input: LoginUserInput): User
 }
 
 type User {

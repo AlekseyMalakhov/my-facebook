@@ -5,11 +5,12 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import { useState } from "react";
 import SignUpForm from "./SignUpForm";
-import { useLazyQuery } from "@apollo/client";
-import { LOGIN } from "../shared/api/queries/queries";
+import { useMutation } from "@apollo/client";
 import { RegDeviceType } from "../gql/graphql";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useNavigate } from "react-router-dom";
+import { LOGIN_MUTATION } from "../shared/api/queries/mutations";
 
 const paper = css({
     width: "396px",
@@ -55,11 +56,12 @@ const createButton = css({
 });
 
 export default function LoginForm() {
+    const navigate = useNavigate();
     const [showSignUp, setShowSignUp] = useState(false);
     const [password, setPassword] = useState("");
     const [regDevice, setRegDevice] = useState("");
 
-    const [login, { loading }] = useLazyQuery(LOGIN);
+    const [login, { loading }] = useMutation(LOGIN_MUTATION, { onCompleted: () => navigate("/home") });
 
     const handleLogin = () => {
         let regDeviceType = RegDeviceType.Phone;
