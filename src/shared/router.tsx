@@ -47,6 +47,18 @@ const router = createBrowserRouter([
     {
         path: "/home",
         element: <Home />,
+        children: [
+            {
+                path: ":tab",
+                element: <Home />,
+                children: [
+                    {
+                        path: "feed",
+                        element: <Home />,
+                    },
+                ],
+            },
+        ],
     },
 ]);
 
