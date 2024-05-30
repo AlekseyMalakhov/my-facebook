@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import Search from "../features/Search";
+import HeaderTabSelector from "./HeaderTabSelector";
 
 const container = css({
     height: "56px",
@@ -14,6 +15,7 @@ export default function Header() {
         <div css={container}>
             <img src="logo.svg" height={40} />
             <Search />
+            <HeaderTabSelector />
         </div>
     );
 }
