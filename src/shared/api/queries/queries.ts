@@ -28,7 +28,7 @@ import { graphql } from "../../../gql";
 
 export const LOGIN = graphql(`
     query Login($input: LoginUserInput!) {
-        user(input: $input) {
+        login(input: $input) {
             id
             first_name
             last_name

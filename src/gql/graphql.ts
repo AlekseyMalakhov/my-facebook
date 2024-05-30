@@ -31,6 +31,11 @@ export enum Gender {
   Other = 'other'
 }
 
+export type LoginUserInput = {
+  password: Scalars['String']['input'];
+  reg_device: RegDeviceInput;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addUser?: Maybe<User>;
@@ -43,7 +48,13 @@ export type MutationAddUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  login?: Maybe<User>;
   user?: Maybe<User>;
+};
+
+
+export type QueryLoginArgs = {
+  input?: InputMaybe<LoginUserInput>;
 };
 
 
@@ -84,5 +95,13 @@ export type AddUserMutationVariables = Exact<{
 
 export type AddUserMutation = { __typename?: 'Mutation', addUser?: { __typename?: 'User', first_name: string, last_name: string, birthday: string, gender: Gender, reg_device: { __typename?: 'RegDevice', type: RegDeviceType, value: string } } | null };
 
+export type LoginQueryVariables = Exact<{
+  input: LoginUserInput;
+}>;
+
+
+export type LoginQuery = { __typename?: 'Query', login?: { __typename?: 'User', id: string, first_name: string, last_name: string } | null };
+
 
 export const AddUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AddUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AddUserInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"addUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"first_name"}},{"kind":"Field","name":{"kind":"Name","value":"last_name"}},{"kind":"Field","name":{"kind":"Name","value":"birthday"}},{"kind":"Field","name":{"kind":"Name","value":"gender"}},{"kind":"Field","name":{"kind":"Name","value":"reg_device"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}}]} as unknown as DocumentNode<AddUserMutation, AddUserMutationVariables>;
+export const LoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Login"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"LoginUserInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"login"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"first_name"}},{"kind":"Field","name":{"kind":"Name","value":"last_name"}}]}}]}}]} as unknown as DocumentNode<LoginQuery, LoginQueryVariables>;

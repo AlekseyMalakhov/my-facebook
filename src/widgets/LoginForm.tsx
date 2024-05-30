@@ -7,6 +7,9 @@ import { useState } from "react";
 import SignUpForm from "./SignUpForm";
 import { useLazyQuery } from "@apollo/client";
 import { LOGIN } from "../shared/api/queries/queries";
+import { RegDeviceType } from "../gql/graphql";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const paper = css({
     width: "396px",
@@ -53,10 +56,31 @@ const createButton = css({
 
 export default function LoginForm() {
     const [showSignUp, setShowSignUp] = useState(false);
+    const [password, setPassword] = useState("");
+    const [regDevice, setRegDevice] = useState("");
 
-    const [login, { loading, data }] = useLazyQuery(LOGIN, { variables: { id } });
+    const [login, { loading }] = useLazyQuery(LOGIN);
 
-    const handleLogin = () => {};
+    const handleLogin = () => {
+        let regDeviceType = RegDeviceType.Phone;
+        if (regDevice.includes("@")) {
+            regDeviceType = RegDeviceType.Email;
+        }
+
+        const data = {
+            reg_device: {
+                type: regDeviceType,
+                value: regDevice,
+            },
+            password,
+        };
+
+        login({
+            variables: {
+                input: data,
+            },
+        });
+    };
 
     const closeSignUp = (event: object, reason: string) => {
         if (reason !== "backdropClick") {
@@ -68,9 +92,24 @@ export default function LoginForm() {
         <div>
             <Paper css={paper} elevation={3}>
                 <div css={container}>
-                    <TextField label="Email or phone number" variant="outlined" fullWidth style={{ paddingBottom: "12px" }} />
-                    <TextField label="Password" variant="outlined" fullWidth type="password" style={{ paddingBottom: "12px" }} />
-                    <Button variant="contained" fullWidth css={loginButton}>
+                    <TextField
+                        label="Email or phone number"
+                        variant="outlined"
+                        fullWidth
+                        style={{ paddingBottom: "12px" }}
+                        value={regDevice}
+                        onChange={(e) => setRegDevice(e.target.value)}
+                    />
+                    <TextField
+                        label="Password"
+                        variant="outlined"
+                        fullWidth
+                        type="password"
+                        style={{ paddingBottom: "12px" }}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <Button variant="contained" fullWidth css={loginButton} onClick={handleLogin}>
                         Log In
                     </Button>
                     <div style={{ marginTop: "16px", textAlign: "center" }}>
@@ -91,6 +130,11 @@ export default function LoginForm() {
                 for a celebrity, brand or business.
             </div>
             <SignUpForm open={showSignUp} handleClose={closeSignUp} />
+            {loading ? (
+                <Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={true}>
+                    <CircularProgress color="primary" />
+                </Backdrop>
+            ) : null}
         </div>
     );
 }
