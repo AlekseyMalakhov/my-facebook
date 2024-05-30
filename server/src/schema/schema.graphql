@@ -1,5 +1,6 @@
 type Query {
     user(id: ID!): User
+    login(input: LoginUserInput): User
 }
 
 type Mutation {
@@ -41,6 +42,11 @@ input AddUserInput {
     last_name: String!
     birthday: String!
     gender: Gender!
+    reg_device: RegDeviceInput!
+    password: String!
+}
+
+input LoginUserInput {
     reg_device: RegDeviceInput!
     password: String!
 }

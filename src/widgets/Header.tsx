@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import Search from "../features/Search";
 
 const container = css({
     height: "56px",
@@ -12,6 +13,7 @@ export default function Header() {
     return (
         <div css={container}>
             <img src="logo.svg" height={40} />
+            <Search />
         </div>
     );
 }

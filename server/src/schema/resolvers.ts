@@ -9,6 +9,12 @@ const resolvers: Resolvers = {
             const user = users.find((u) => u.id === id);
             return user;
         },
+        login: (parent, args) => {
+            const creds = args.input;
+            console.log(creds);
+            const user = users.find((u) => u.id === "1");
+            return user;
+        },
     },
 
     Mutation: {

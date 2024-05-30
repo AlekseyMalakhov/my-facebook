@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import { useState } from "react";
 import SignUpForm from "./SignUpForm";
+import { useLazyQuery } from "@apollo/client";
+import { LOGIN } from "../shared/api/queries/queries";
 
 const paper = css({
     width: "396px",
@@ -51,6 +53,10 @@ const createButton = css({
 
 export default function LoginForm() {
     const [showSignUp, setShowSignUp] = useState(false);
+
+    const [login, { loading, data }] = useLazyQuery(LOGIN, { variables: { id } });
+
+    const handleLogin = () => {};
 
     const closeSignUp = (event: object, reason: string) => {
         if (reason !== "backdropClick") {

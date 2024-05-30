@@ -31,6 +31,11 @@ export enum Gender {
   Other = 'other'
 }
 
+export type LoginUserInput = {
+  password: Scalars['String']['input'];
+  reg_device: RegDeviceInput;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addUser?: Maybe<User>;
@@ -43,7 +48,13 @@ export type MutationAddUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  login?: Maybe<User>;
   user?: Maybe<User>;
+};
+
+
+export type QueryLoginArgs = {
+  input?: InputMaybe<LoginUserInput>;
 };
 
 
@@ -153,6 +164,7 @@ export type ResolversTypes = ResolversObject<{
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   Gender: Gender;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  LoginUserInput: LoginUserInput;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   RegDevice: ResolverTypeWrapper<RegDevice>;
@@ -167,6 +179,7 @@ export type ResolversParentTypes = ResolversObject<{
   AddUserInput: AddUserInput;
   Boolean: Scalars['Boolean']['output'];
   ID: Scalars['ID']['output'];
+  LoginUserInput: LoginUserInput;
   Mutation: {};
   Query: {};
   RegDevice: RegDevice;
@@ -180,6 +193,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
+  login?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, Partial<QueryLoginArgs>>;
   user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserArgs, 'id'>>;
 }>;
 
