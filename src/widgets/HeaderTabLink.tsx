@@ -11,19 +11,20 @@ const link = css({
     justifyContent: "center",
     alignItems: "center",
     width: "112px",
-    height: "48px",
     borderRadius: "7px",
-    "&:hover": {
-        backgroundColor: "#F0F2F5",
-    },
     "&:active": {
         color: "transparent",
     },
     margin: "0 5px",
+    marginTop: "4px",
+});
+const linkSelected = css({
+    "&:hover": {
+        backgroundColor: "#F0F2F5",
+    },
 });
 
 const linkContainer = css({
-    //borderBottom: "4px solid grey",
     height: "56px",
     display: "flex",
     flexDirection: "column",
@@ -32,7 +33,6 @@ const linkContainer = css({
 });
 
 const border = css({
-    //borderBottom: "4px solid grey",
     height: "4px",
     width: "100%",
     backgroundColor: selectedColor.color,
@@ -48,7 +48,7 @@ export default function HeaderTabLink({ selected, icon, to }: Props) {
     const Icon = icon;
     return (
         <div css={linkContainer}>
-            <Link to={to} css={link}>
+            <Link to={to} css={[link, !selected ? linkSelected : null]}>
                 <Icon sx={selected ? selectedColor : defaultColor} filled={selected} />
             </Link>
             <div css={border} style={selected ? { visibility: "visible" } : { visibility: "hidden" }}></div>
