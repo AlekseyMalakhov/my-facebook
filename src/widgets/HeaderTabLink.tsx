@@ -16,7 +16,7 @@ const link = css({
         color: "transparent",
     },
     margin: "0 5px",
-    marginTop: "4px",
+    marginTop: "5px",
 });
 const linkSelected = css({
     "&:hover": {
@@ -33,8 +33,8 @@ const linkContainer = css({
 });
 
 const border = css({
-    height: "4px",
-    width: "100%",
+    height: "3px",
+    width: "90%",
     backgroundColor: selectedColor.color,
 });
 
