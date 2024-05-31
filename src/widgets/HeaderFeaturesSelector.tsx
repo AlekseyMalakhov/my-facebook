@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "../shared/svg/MenuIcon";
+import MessengerIcon from "../shared/svg/MessengerIcon";
 
 const container = css({
     display: "flex",
@@ -43,6 +44,9 @@ export default function HeaderFeaturesSelector() {
             </Link>
             <IconButton aria-label="menu" css={menu}>
                 <MenuIcon width={20} height={20} sx={{ color: "#1c1e21" }} />
+            </IconButton>
+            <IconButton aria-label="messenger" css={menu}>
+                <MessengerIcon width={22} height={22} sx={{ color: "#1c1e21" }} />
             </IconButton>
         </div>
     );
