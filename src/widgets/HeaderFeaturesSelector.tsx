@@ -35,6 +35,11 @@ const menu = css({
     marginRight: "8px",
 });
 
+const notificationStyle = css({
+    borderRadius: "20px",
+    cursor: "pointer",
+});
+
 export default function HeaderFeaturesSelector() {
     return (
         <div css={container}>
@@ -49,9 +54,9 @@ export default function HeaderFeaturesSelector() {
             <IconButton aria-label="messenger" css={menu}>
                 <MessengerIcon width={22} height={22} sx={{ color: "#1c1e21" }} />
             </IconButton>
-            <IconButton aria-label="notification" css={menu}>
-                <NotificationIcon width={20} height={20} sx={{ color: "#1c1e21" }} />
-            </IconButton>
+            <div aria-label="notification" css={[menu, notificationStyle]}>
+                <NotificationIcon width={40} height={40} />
+            </div>
         </div>
     );
 }
