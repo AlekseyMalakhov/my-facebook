@@ -1,8 +1,8 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
-type Props = SvgIconProps & { filled?: boolean };
+export type MyIconProps = SvgIconProps & { filled?: boolean };
 
-export default function HomeIcon({ filled, ...props }: Props) {
+export default function HomeIcon({ filled, ...props }: MyIconProps) {
     if (filled) {
         return (
             <SvgIcon {...props}>
