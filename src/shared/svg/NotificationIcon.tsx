@@ -30,7 +30,7 @@ const icon = css({
 export default function NotificationIcon(props: Props) {
     return (
         <div css={container}>
-            <img src="accont_icon.png" {...props} css={icon} />
+            <img src="/accont_icon.png" {...props} css={icon} />
             <div css={cover}></div>
         </div>
     );

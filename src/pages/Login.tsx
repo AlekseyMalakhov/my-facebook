@@ -128,7 +128,7 @@ export default function Login() {
             <main css={main}>
                 <div css={container2}>
                     <div css={hello}>
-                        <img src="facebook.svg" height={106} style={{ marginLeft: "-28px" }} />
+                        <img src="/facebook.svg" height={106} style={{ marginLeft: "-28px" }} />
                         <h2 css={helloText}>Connect with friends and the world around you on Facebook.</h2>
                     </div>
                     <LoginForm />

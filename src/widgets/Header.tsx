@@ -20,7 +20,7 @@ export default function Header() {
     return (
         <div css={container}>
             <div css={left}>
-                <img src="logo.svg" height={40} />
+                <img src="/logo.svg" height={40} />
                 <Search />
             </div>
             <HeaderTabSelector />
