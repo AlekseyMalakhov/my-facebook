@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "../shared/svg/MenuIcon";
@@ -15,7 +15,7 @@ const button = css({
     width: "104px",
     fontFamily: "Segoe UI Semibold",
     backgroundColor: "#EBF5FF",
-    color: "#0064D1",
+    //color: "#0064D1",
     fontSize: ".9375rem",
     fontWeight: 600,
     lineHeight: "1.3333",
@@ -40,11 +40,22 @@ const notificationStyle = css({
     cursor: "pointer",
 });
 
+const friendsTab = css({
+    color: "#0064D1",
+    backgroundColor: "EBF5FF",
+});
+
+const justTab = css({
+    color: "#1c1e21",
+    backgroundColor: "#E4E6EB",
+});
 export default function HeaderFeaturesSelector() {
+    const { tab } = useParams();
+
     return (
         <div css={container}>
             <Link to="friends" style={{ marginRight: "8px" }}>
-                <Button variant="contained" css={button} disableElevation>
+                <Button variant="contained" css={[button, tab === "friends" ? friendsTab : justTab]} disableElevation>
                     Find friends
                 </Button>
             </Link>
