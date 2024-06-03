@@ -3,132 +3,133 @@ import ListElement from "./ListElement";
 
 const container = css({
     flex: 1,
+    listStyle: "none",
 });
 
 const list = [
     {
         id: 1,
-        value: "friends",
+        value: "/friends",
         title: "Friends",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0px -259px" },
     },
     {
         id: 2,
-        value: "welcome",
+        value: "/welcome",
         title: "Welcome",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons_2.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons_2.png", position: "0 0" },
     },
     {
         id: 3,
-        value: "memories",
+        value: "/memories",
         title: "Memories",
-        icon: { type: "sprite", url: "", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0px -407px" },
     },
     {
         id: 4,
-        value: "saved",
+        value: "/saved",
         title: "Saved",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0px -148px" },
     },
     {
         id: 5,
-        value: "groups",
+        value: "/groups",
         title: "Groups",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0px -37px" },
     },
     {
         id: 6,
-        value: "video",
+        value: "/video",
         title: "Video",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0px -481px" },
     },
     {
         id: 7,
-        value: "marketplace",
+        value: "/marketplace",
         title: "Marketplace",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0px -370px" },
     },
     {
         id: 8,
-        value: "feeds",
+        value: "/feeds",
         title: "Feeds",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "img", url: "/left_panel_icons/feeds.png", position: "" },
     },
     {
         id: 9,
-        value: "events",
+        value: "/events",
         title: "Events",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0 -37px" },
     },
     {
         id: 10,
-        value: "ads_manager",
+        value: "/ads_manager",
         title: "Ads Manager",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "img", url: "/left_panel_icons/ads_manager.png", position: "" },
     },
     {
         id: 11,
-        value: "threads",
+        value: "/threads",
         title: "Threads",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "img", url: "/left_panel_icons/threads.png", position: "" },
     },
     {
         id: 12,
-        value: "climate_science_center",
+        value: "/climate_science_center",
         title: "Climate Science Center",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "img", url: "/left_panel_icons/climate_center.png", position: "" },
     },
     {
         id: 13,
-        value: "fundraisers",
+        value: "/fundraisers",
         title: "Fundraisers",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0px -296px" },
     },
     {
         id: 14,
-        value: "gaming_video",
+        value: "/gaming_video",
         title: "Gaming Video",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "img", url: "/left_panel_icons/gaming_video.png", position: "" },
     },
     {
         id: 15,
-        value: "messenger",
+        value: "/messenger",
         title: "Messenger",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons_3.png", position: "0px 0px" },
     },
     {
         id: 16,
-        value: "orders_and_payments",
+        value: "/orders_and_payments",
         title: "Orders and payments",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "img", url: "/left_panel_icons/order_and_payments.png", position: "" },
     },
     {
         id: 17,
-        value: "pages",
+        value: "/pages",
         title: "Pages",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0px -111px" },
     },
     {
         id: 18,
-        value: "play_games",
+        value: "/play_games",
         title: "Play games",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0px -74px" },
     },
     {
         id: 19,
-        value: "recent_ad_activity",
+        value: "/recent_ad_activity",
         title: "Recent ad activity",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "" },
+        icon: { type: "img", url: "/left_panel_icons/recent_activity.png", position: "" },
     },
 ];
 
 export default function MainLeftPanel() {
     return (
-        <div css={container}>
+        <ul css={container}>
             {list.map((item) => (
                 <ListElement item={item} key={item.id} />
             ))}
-        </div>
+        </ul>
     );
 }
 
