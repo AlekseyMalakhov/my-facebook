@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
-import MainLeftPanel from "./MainLeftPanel";
-import MainMiddlePanel from "./MainMiddlePanel";
-import MainRightPanel from "./MainRightPanel";
+import MainLeftPanel from "./MainLeftPanel/MainLeftPanel";
+import MainMiddlePanel from "./MainMiddlePanel/MainMiddlePanel";
+import MainRightPanel from "./MainRightPanel/MainRightPanel";
 
 const container = css({
     display: "flex",
