@@ -6,7 +6,7 @@ const container = css({
     backgroundColor: "#F0F2F5",
     display: "flex",
     flexDirection: "column",
-    height: "100%",
+    minHeight: "100vh",
 });
 
 export default function Home() {
