@@ -103,7 +103,7 @@ export default function ListElement({ item }: Props) {
                 <Link to={value}>
                     <div css={container2}>
                         <div css={iconDiv}>
-                            <Icon width="36" height="36" {...svgProps} />
+                            <Icon width="20" height="20" {...svgProps} />
                         </div>
                         <div css={text}>{title}</div>
                     </div>

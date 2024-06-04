@@ -53,7 +53,7 @@ export const fullList: ListElementType[] = [
         id: 9,
         value: "/events",
         title: "Events",
-        icon: { type: "sprite", url: "/left_panel_icons/panel_icons.png", position: "0 -37px" },
+        icon: { type: "sprite", url: "/left_panel_icons/panel_icons_4.png", position: "0 -37px" },
     },
     {
         id: 10,

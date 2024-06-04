@@ -7,6 +7,7 @@ import { fullList } from "./list";
 const container = css({
     flex: 1,
     marginTop: "16px",
+    marginBottom: "30px",
 });
 
 export default function MainLeftPanel() {
