@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "../shared/svg/MenuIcon";
 import MessengerIcon from "../shared/svg/MessengerIcon";
-import NotificationIcon from "../shared/svg/NotificationIcon";
+import AccountIcon from "../shared/svg/AccountIcon";
 
 const container = css({
     display: "flex",
@@ -35,7 +35,7 @@ const menu = css({
     marginRight: "8px",
 });
 
-const notificationStyle = css({
+const accountStyle = css({
     borderRadius: "20px",
     cursor: "pointer",
 });
@@ -65,8 +65,8 @@ export default function HeaderFeaturesSelector() {
             <IconButton aria-label="messenger" css={menu}>
                 <MessengerIcon width={22} height={22} sx={{ color: "#1c1e21" }} />
             </IconButton>
-            <div aria-label="notification" css={[menu, notificationStyle]}>
-                <NotificationIcon width={40} height={40} />
+            <div aria-label="account" css={[menu, accountStyle]}>
+                <AccountIcon width={40} height={40} />
             </div>
         </div>
     );

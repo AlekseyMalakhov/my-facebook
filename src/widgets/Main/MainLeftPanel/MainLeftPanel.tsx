@@ -1,9 +1,10 @@
 import { css } from "@emotion/react";
 import ListElement from "./ListElement";
+import AccountIcon from "../../../shared/svg/AccountIcon";
 
 const container = css({
     flex: 1,
-    listStyle: "none",
+    marginTop: "16px",
 });
 
 const list = [
@@ -124,19 +125,19 @@ const list = [
 ];
 
 export default function MainLeftPanel() {
+    const account = {
+        id: Date.now(),
+        value: "account",
+        title: "Account",
+        icon: AccountIcon,
+    };
+
     return (
         <ul css={container}>
+            <ListElement item={account} />
             {list.map((item) => (
                 <ListElement item={item} key={item.id} />
             ))}
         </ul>
     );
-}
-
-{
-    /* <i
-    data-visualcompletion="css-img"
-    class=""
-    style='background-image: url("https://static.xx.fbcdn.net/rsrc.php/v3/yS/r/aW4FjA5PhOT.png"); background-position: 0px -259px; background-size: auto; width: 36px; height: 36px; background-repeat: no-repeat; display: inline-block;'
-></i>; */
 }
