@@ -1,20 +1,34 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import { AccountIconProps } from "../../../shared/svg/AccountIcon";
+import { SvgIconProps } from "@mui/material";
+
+type ImgIcon = {
+    type: "sprite" | "img";
+    url: string;
+    position: string;
+};
+
+type CustomIcon = {
+    type: "icon";
+    value: React.FC<AccountIconProps>;
+};
+
+type SvgIcon = {
+    type: "svg";
+    value: React.FC<SvgIconProps>;
+};
+
+export type ListElementType = {
+    id: number;
+    value: string;
+    title: string;
+    icon: ImgIcon | CustomIcon | SvgIcon;
+    svgProps?: SvgIconProps;
+};
 
 type Props = {
-    item: {
-        id: number;
-        value: string;
-        title: string;
-        icon:
-            | {
-                  type: string;
-                  url: string;
-                  position: string;
-              }
-            | React.FC<AccountIconProps>;
-    };
+    item: ListElementType;
 };
 
 const container = css({
@@ -50,9 +64,9 @@ const iconDiv = css({
 });
 
 export default function ListElement({ item }: Props) {
-    const { value, title, icon } = item;
+    const { value, title, icon, svgProps } = item;
 
-    if ("type" in icon) {
+    if (icon.type === "sprite" || icon.type === "img") {
         const iconStyle2 = {
             backgroundPosition: icon.position,
             backgroundImage: `url(${icon.url})`,
@@ -68,14 +82,28 @@ export default function ListElement({ item }: Props) {
                 </Link>
             </li>
         );
-    } else {
-        const Icon = icon;
+    } else if (icon.type === "icon") {
+        const Icon = icon.value;
         return (
             <li css={container}>
                 <Link to={value}>
                     <div css={container2}>
                         <div css={iconDiv}>
                             <Icon width={36} height={36} style={{ borderRadius: "18px" }} />
+                        </div>
+                        <div css={text}>{title}</div>
+                    </div>
+                </Link>
+            </li>
+        );
+    } else if (icon.type === "svg") {
+        const Icon = icon.value;
+        return (
+            <li css={container}>
+                <Link to={value}>
+                    <div css={container2}>
+                        <div css={iconDiv}>
+                            <Icon width="36" height="36" {...svgProps} />
                         </div>
                         <div css={text}>{title}</div>
                     </div>
