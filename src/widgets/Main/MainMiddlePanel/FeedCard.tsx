@@ -3,6 +3,8 @@ import AccountIcon from "../../../shared/svg/AccountIcon";
 import { getMonthDayAtTime } from "../../../shared/utils";
 import PublicGroupIcon from "../../../shared/svg/PublicGroupIcon";
 import { Link } from "react-router-dom";
+import CrossCloseButton from "../../../features/CrossCloseButton";
+import ThreeDotsButton from "../../../features/ThreeDotsButton";
 
 // {
 //     id: 1,
@@ -79,6 +81,7 @@ const header = css({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    width: "100%",
 });
 
 const userData = css({
@@ -106,7 +109,10 @@ const dateDiv = css({
     display: "flex",
     alignItems: "center",
 });
-const headerButtons = css({});
+const headerButtons = css({
+    display: "flex",
+    alignItems: "center",
+});
 
 const image = css({});
 
@@ -137,7 +143,10 @@ export default function FeedCard({ item }: Props) {
                         </div>
                     </div>
                 </div>
-                <div css={headerButtons}></div>
+                <div css={headerButtons}>
+                    <ThreeDotsButton onClick={() => null} />
+                    <CrossCloseButton onClick={() => null} style={{ marginLeft: "5px" }} />
+                </div>
             </div>
             <div css={image}></div>
             <div css={footer}></div>
