@@ -32,7 +32,7 @@ export const feed = [
         ],
     },
     {
-        id: 1,
+        id: 2,
         author: "Purus sit amet luctus",
         date: "1717592013140",
         text: "Imperdiet sed euismod nisi porta lorem mollis. Id donec ultrices tincidunt arcu non sodales neque.",

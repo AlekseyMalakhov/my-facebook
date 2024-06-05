@@ -1,6 +1,8 @@
 import { css } from "@emotion/react";
 import AccountIcon from "../../../shared/svg/AccountIcon";
 import { getMonthDayAtTime } from "../../../shared/utils";
+import PublicGroupIcon from "../../../shared/svg/PublicGroupIcon";
+import { Link } from "react-router-dom";
 
 // {
 //     id: 1,
@@ -84,11 +86,26 @@ const userData = css({
     alignItems: "center",
 });
 
-const userText = css({});
+const userText = css({
+    marginLeft: "8px",
+});
 
-const userName = css({});
+const userName = css({
+    fontFamily: "Segoe UI Semibold",
+    fontSize: "15px",
+    fontWeight: 600,
+    lineHeight: "20px",
+    marginBottom: "5px",
+});
 
-const dateDiv = css({});
+const dateDiv = css({
+    fontFamily: "Segoe UI",
+    color: "#65676B",
+    fontSize: "13px",
+    lineHeight: "16px",
+    display: "flex",
+    alignItems: "center",
+});
 const headerButtons = css({});
 
 const image = css({});
@@ -106,8 +123,18 @@ export default function FeedCard({ item }: Props) {
                         <AccountIcon width={40} height={40} />
                     </div>
                     <div css={userText}>
-                        <div css={userName}>{item.author}</div>
-                        <div css={dateDiv}>{date}</div>
+                        <div css={userName}>
+                            {item.author}
+                            <span>&nbsp;·&nbsp;</span>
+                            <Link to={""}>
+                                <span style={{ color: "#0064D1" }}>Follow</span>
+                            </Link>
+                        </div>
+                        <div css={dateDiv}>
+                            {date}
+                            <span>&nbsp;·&nbsp;</span>
+                            <PublicGroupIcon width={12} height={12} viewBox="0 0 16 16" />
+                        </div>
                     </div>
                 </div>
                 <div css={headerButtons}></div>
