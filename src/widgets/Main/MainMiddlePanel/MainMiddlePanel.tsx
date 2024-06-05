@@ -3,8 +3,7 @@ import { feed } from "./feed";
 import FeedCard from "./FeedCard";
 
 const container = css({
-    backgroundColor: "#e9e9ff",
-    minWidth: "680px",
+    maxWidth: "680px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

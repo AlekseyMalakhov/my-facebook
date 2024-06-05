@@ -4,6 +4,7 @@ import AccountIcon from "../../../shared/svg/AccountIcon";
 import { useState } from "react";
 import SeeMoreIcon from "../../../shared/svg/SeeMoreIcon";
 import { fullList } from "./list";
+
 const container = css({
     flex: 1,
     marginTop: "16px",

@@ -68,9 +68,10 @@ type Props = {
 
 const container = css({
     display: "flex",
+    flexDirection: "column",
     alignItems: "center",
     backgroundColor: "white",
-    borderRadius: "5px",
+    borderRadius: "8px",
     padding: "8px",
     width: "100%",
     boxSizing: "border-box",
@@ -114,7 +115,10 @@ const headerButtons = css({
     alignItems: "center",
 });
 
-const image = css({});
+const image = css({
+    marginTop: "16px",
+    width: "inherit",
+});
 
 const footer = css({});
 
@@ -148,7 +152,9 @@ export default function FeedCard({ item }: Props) {
                     <CrossCloseButton onClick={() => null} style={{ marginLeft: "5px" }} />
                 </div>
             </div>
-            <div css={image}></div>
+            <div css={image}>
+                <img src={item.img} style={{ width: "100%" }} />
+            </div>
             <div css={footer}></div>
         </div>
     );

@@ -4,7 +4,7 @@ export const feed = [
         author: "Minim veniam",
         date: "1717592013140",
         text: "Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        img: "/photo1.jpg",
+        img: "/feed_images/photo1.jpg",
         likes: {
             like: 10,
             love: 3,
@@ -36,7 +36,7 @@ export const feed = [
         author: "Purus sit amet luctus",
         date: "1717592013140",
         text: "Imperdiet sed euismod nisi porta lorem mollis. Id donec ultrices tincidunt arcu non sodales neque.",
-        img: "/photo1.jpg",
+        img: "/feed_images/photo1.jpg",
         likes: {
             like: 10,
             love: 3,
