@@ -9,6 +9,7 @@ export const feed = [
             like: 10,
             love: 3,
         },
+        likesNumber: 13,
         shares: 17,
         comments: [
             {
@@ -41,6 +42,7 @@ export const feed = [
             like: 10,
             love: 3,
         },
+        likesNumber: 13,
         shares: 17,
         comments: [
             {

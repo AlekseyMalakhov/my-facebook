@@ -5,39 +5,7 @@ import PublicGroupIcon from "../../../shared/svg/PublicGroupIcon";
 import { Link } from "react-router-dom";
 import CrossCloseButton from "../../../features/CrossCloseButton";
 import ThreeDotsButton from "../../../features/ThreeDotsButton";
-
-// {
-//     id: 1,
-//     author: "Minim veniam",
-//     date: "1716904148200",
-//     text: "Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-//     img: "/photo1.jpg",
-//     likes: {
-//         like: 10,
-//         love: 3,
-//     },
-//     shares: 17,
-//     comments: [
-//         {
-//             id: 1,
-//             author: "Viverra tellus in hac",
-//             text: "Amet venenatis urna cursus eget nunc scelerisque viverra. Felis imperdiet proin fermentum leo vel orci porta non pulvinar. Sed viverra tellus in hac habitasse platea. Ac ut consequat semper viverra nam libero. Viverra nam libero justo laoreet sit amet cursus sit. Varius sit amet mattis vulputate enim nulla. Pellentesque elit ullamcorper dignissim cras. Tristique senectus et netus et malesuada fames ac turpis. Risus sed vulputate odio ut enim blandit volutpat maecenas. Id venenatis a condimentum vitae sapien. Tristique et egestas quis ipsum suspendisse ultrices gravida dictum. Dolor magna eget est lorem ipsum.",
-//             date: "1716904148252",
-//         },
-//         {
-//             id: 2,
-//             author: "Quis blandit turpis",
-//             text: "Cras sed felis eget velit. Accumsan lacus vel facilisis volutpat est velit egestas. In mollis nunc sed id semper. Ut lectus arcu bibendum at varius vel pharetra vel. ",
-//             date: "1716904148350",
-//         },
-//         {
-//             id: 3,
-//             author: "Vitae proin",
-//             text: "Morbi tincidunt ornare massa eget egestas purus viverra. Nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut.",
-//             date: "1716904148480",
-//         },
-//     ],
-// },
+import FeedCardButton from "./FeedCardButton";
 
 type LikesObj = {
     like: number;
@@ -58,6 +26,7 @@ type FeedItem = {
     text: string;
     img: string;
     likes: LikesObj;
+    likesNumber: number;
     shares: number;
     comments: Comment[];
 };
@@ -72,7 +41,7 @@ const container = css({
     alignItems: "center",
     backgroundColor: "white",
     borderRadius: "8px",
-    padding: "8px",
+    padding: "8px 0",
     width: "100%",
     boxSizing: "border-box",
     marginBottom: "16px",
@@ -83,6 +52,8 @@ const header = css({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
+    padding: "0 8px",
+    boxSizing: "border-box",
 });
 
 const userData = css({
@@ -117,10 +88,59 @@ const headerButtons = css({
 
 const image = css({
     marginTop: "16px",
-    width: "inherit",
 });
 
-const footer = css({});
+const footer = css({
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "0 8px",
+    boxSizing: "border-box",
+});
+
+const footerLikes = css({
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "10px 8px",
+});
+
+const likes = css({
+    fontFamily: "Segoe UI",
+    display: "flex",
+    alignItems: "center",
+    marginLeft: "8px",
+    lineHeight: "1.3333",
+});
+
+const commentsNumber = css({
+    fontFamily: "Segoe UI",
+    display: "flex",
+    alignItems: "center",
+    color: "#65676b",
+    fontSize: "15px",
+    lineHeight: "20px",
+    fontWeight: 400,
+});
+
+const bottomContainer = css({
+    width: "100%",
+    padding: "0 8px",
+    boxSizing: "border-box",
+});
+
+const bottomButtons = css({
+    width: "100%",
+    padding: "0 8px",
+    paddingTop: "6px",
+    boxSizing: "border-box",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderTop: "1px solid #CED0D4",
+});
 
 export default function FeedCard({ item }: Props) {
     const date = getMonthDayAtTime(Number(item.date));
@@ -155,7 +175,26 @@ export default function FeedCard({ item }: Props) {
             <div css={image}>
                 <img src={item.img} style={{ width: "100%" }} />
             </div>
-            <div css={footer}></div>
+            <div css={footer}>
+                <div css={footerLikes}>
+                    <div css={likes}>
+                        <img src="/like.svg" width={18} height={18}></img>
+                        <img src="/heart.svg" width={18} height={18}></img>
+                        <div style={{ paddingLeft: "5px", color: "#65676b" }}>{item.likesNumber}</div>
+                    </div>
+                    <div css={commentsNumber}>
+                        <div style={{ padding: "0 8px" }}>{item.comments.length} comments</div>
+                        <div style={{ padding: "0 8px" }}>{item.comments.length} shares</div>
+                    </div>
+                </div>
+                <div css={bottomContainer}>
+                    <div css={bottomButtons}>
+                        <FeedCardButton type="like" />
+                        <FeedCardButton type="comment" />
+                        <FeedCardButton type="share" />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
