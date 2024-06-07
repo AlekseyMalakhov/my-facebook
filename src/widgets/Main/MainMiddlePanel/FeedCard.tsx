@@ -161,18 +161,20 @@ export default function FeedCard({ item }: Props) {
         // console.log(e.target);
         // console.log(e.currentTarget);
         // console.log("f----------");
-        if (e.target === e.currentTarget) {
-            setShowLikesPanel(true);
-        }
+        // if (e.target === e.currentTarget) {
+
+        // }
+        setShowLikesPanel(true);
     };
 
     const closePanel = (e: MouseEvent) => {
         //e.stopPropagation();
         // console.log(e.target);
         // console.log(e.currentTarget);
-        if (e.target === e.currentTarget) {
-            setShowLikesPanel(false);
-        }
+        // if (e.target === e.currentTarget) {
+        //     setShowLikesPanel(false);
+        // }
+        setShowLikesPanel(false);
     };
 
     console.log("showLikesPanel:", showLikesPanel);
@@ -223,14 +225,20 @@ export default function FeedCard({ item }: Props) {
                 <div css={bottomContainer}>
                     <div css={bottomButtons}>
                         <div ref={likesButtonEl}>
-                            <FeedCardButton type="like" onMouseEnter={showPanel} onMouseLeave={closePanel} />
+                            <FeedCardButton type="like" />
                         </div>
+                        <div
+                            style={{ width: "200px", height: "30px", backgroundColor: "green" }}
+                            onMouseEnter={showPanel}
+                            onMouseLeave={closePanel}
+                        ></div>
                         <FeedCardButton type="comment" />
                         <FeedCardButton type="share" />
                     </div>
                 </div>
             </div>
             <Popover
+                sx={{ pointerEvents: "none" }}
                 open={showLikesPanel}
                 anchorEl={likesButtonEl.current}
                 onClose={() => setShowLikesPanel(false)}
@@ -242,6 +250,7 @@ export default function FeedCard({ item }: Props) {
                     vertical: "bottom",
                     horizontal: "center",
                 }}
+                hideBackdrop
             >
                 <div style={{ width: "100px" }}>
                     You can change who sees your gender on your profile later. Select Custom to choose another gender, or if you'd rather not say.
