@@ -7,7 +7,7 @@ import CrossCloseButton from "../../../features/CrossCloseButton";
 import ThreeDotsButton from "../../../features/ThreeDotsButton";
 import FeedCardButton from "./FeedCardButton";
 import { Popover } from "@mui/material";
-import { MouseEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 type LikesObj = {
     like: number;
@@ -148,35 +148,6 @@ export default function FeedCard({ item }: Props) {
     const [showLikesPanel, setShowLikesPanel] = useState(false);
     const likesButtonEl = useRef<HTMLDivElement | null>(null);
 
-    // const toggleLikesPanel = () => {
-    //     if (showLikesPanel) {
-    //         setShowLikesPanel(false);
-    //     } else {
-    //         setShowLikesPanel(true);
-    //     }
-    // };
-    const showPanel = (e: MouseEvent) => {
-        //e.stopPropagation();
-        // console.log("s----------");
-        // console.log(e.target);
-        // console.log(e.currentTarget);
-        // console.log("f----------");
-        // if (e.target === e.currentTarget) {
-
-        // }
-        setShowLikesPanel(true);
-    };
-
-    const closePanel = (e: MouseEvent) => {
-        //e.stopPropagation();
-        // console.log(e.target);
-        // console.log(e.currentTarget);
-        // if (e.target === e.currentTarget) {
-        //     setShowLikesPanel(false);
-        // }
-        setShowLikesPanel(false);
-    };
-
     console.log("showLikesPanel:", showLikesPanel);
     const date = getMonthDayAtTime(Number(item.date));
 
@@ -224,14 +195,9 @@ export default function FeedCard({ item }: Props) {
                 </div>
                 <div css={bottomContainer}>
                     <div css={bottomButtons}>
-                        <div ref={likesButtonEl}>
+                        <div ref={likesButtonEl} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
                             <FeedCardButton type="like" />
                         </div>
-                        <div
-                            style={{ width: "200px", height: "30px", backgroundColor: "green" }}
-                            onMouseEnter={showPanel}
-                            onMouseLeave={closePanel}
-                        ></div>
                         <FeedCardButton type="comment" />
                         <FeedCardButton type="share" />
                     </div>

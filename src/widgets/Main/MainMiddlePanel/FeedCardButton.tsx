@@ -1,10 +1,7 @@
 import { css } from "@emotion/react";
-import { MouseEvent } from "react";
 
 type Props = {
     type: "share" | "comment" | "like";
-    onMouseEnter?: (e: MouseEvent) => void;
-    onMouseLeave?: (e: MouseEvent) => void;
 };
 
 const container = css({
@@ -38,7 +35,7 @@ const textStyle = css({
     userSelect: "none",
 });
 
-export default function FeedCardButton({ type, onMouseEnter, onMouseLeave }: Props) {
+export default function FeedCardButton({ type }: Props) {
     let pos = "0px -865px";
     let text = "Share";
     if (type === "comment") {
@@ -50,29 +47,10 @@ export default function FeedCardButton({ type, onMouseEnter, onMouseLeave }: Pro
         text = "Like";
     }
 
-    // const enter = (e: MouseEvent) => {
-    //     e.stopPropagation();
-    // };
-    // const leave = (e: MouseEvent) => {
-    //     e.stopPropagation();
-    // };
     return (
-        <div
-            css={container}
-            aria-label="Send this to friends or post it on your profile."
-            role="button"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-        >
-            <div
-                css={icon}
-                style={{ backgroundPosition: pos }}
-                onMouseEnter={(e) => e.stopPropagation()}
-                onMouseLeave={(e) => e.stopPropagation()}
-            ></div>
-            <div css={textStyle} onMouseEnter={(e) => e.stopPropagation()} onMouseLeave={(e) => e.stopPropagation()}>
-                {text}
-            </div>
+        <div css={container} aria-label="Send this to friends or post it on your profile." role="button">
+            <div css={icon} style={{ backgroundPosition: pos }}></div>
+            <div css={textStyle}>{text}</div>
         </div>
     );
 }
