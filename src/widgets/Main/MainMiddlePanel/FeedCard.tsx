@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import CrossCloseButton from "../../../features/CrossCloseButton";
 import ThreeDotsButton from "../../../features/ThreeDotsButton";
 import FeedCardButton from "./FeedCardButton";
+import { Popover } from "@mui/material";
+import { MouseEvent, useRef, useState } from "react";
 
 type LikesObj = {
     like: number;
@@ -143,6 +145,37 @@ const bottomButtons = css({
 });
 
 export default function FeedCard({ item }: Props) {
+    const [showLikesPanel, setShowLikesPanel] = useState(false);
+    const likesButtonEl = useRef<HTMLDivElement | null>(null);
+
+    // const toggleLikesPanel = () => {
+    //     if (showLikesPanel) {
+    //         setShowLikesPanel(false);
+    //     } else {
+    //         setShowLikesPanel(true);
+    //     }
+    // };
+    const showPanel = (e: MouseEvent) => {
+        //e.stopPropagation();
+        // console.log("s----------");
+        // console.log(e.target);
+        // console.log(e.currentTarget);
+        // console.log("f----------");
+        if (e.target === e.currentTarget) {
+            setShowLikesPanel(true);
+        }
+    };
+
+    const closePanel = (e: MouseEvent) => {
+        //e.stopPropagation();
+        // console.log(e.target);
+        // console.log(e.currentTarget);
+        if (e.target === e.currentTarget) {
+            setShowLikesPanel(false);
+        }
+    };
+
+    console.log("showLikesPanel:", showLikesPanel);
     const date = getMonthDayAtTime(Number(item.date));
 
     return (
@@ -189,12 +222,31 @@ export default function FeedCard({ item }: Props) {
                 </div>
                 <div css={bottomContainer}>
                     <div css={bottomButtons}>
-                        <FeedCardButton type="like" />
+                        <div ref={likesButtonEl}>
+                            <FeedCardButton type="like" onMouseEnter={showPanel} onMouseLeave={closePanel} />
+                        </div>
                         <FeedCardButton type="comment" />
                         <FeedCardButton type="share" />
                     </div>
                 </div>
             </div>
+            <Popover
+                open={showLikesPanel}
+                anchorEl={likesButtonEl.current}
+                onClose={() => setShowLikesPanel(false)}
+                anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "center",
+                }}
+                transformOrigin={{
+                    vertical: "bottom",
+                    horizontal: "center",
+                }}
+            >
+                <div style={{ width: "100px" }}>
+                    You can change who sees your gender on your profile later. Select Custom to choose another gender, or if you'd rather not say.
+                </div>
+            </Popover>
         </div>
     );
 }
