@@ -8,6 +8,7 @@ import ThreeDotsButton from "../../../features/ThreeDotsButton";
 import FeedCardButton from "./FeedCardButton";
 import { Popover } from "@mui/material";
 import { useRef, useState } from "react";
+import LikeSmile from "./LikeSmile";
 
 type LikesObj = {
     like: number;
@@ -144,11 +145,48 @@ const bottomButtons = css({
     borderTop: "1px solid #CED0D4",
 });
 
+const emojiPanel = css({
+    display: "flex",
+    alignItems: "center",
+    borderRadius: "23px",
+    position: "relative",
+});
+
+const emojis = [
+    {
+        id: 1,
+        position: "-2px 0px",
+    },
+    {
+        id: 2,
+        position: "-61px 0px",
+    },
+    {
+        id: 3,
+        position: "-120px 0px",
+    },
+    {
+        id: 4,
+        position: "-179px 0px",
+    },
+    {
+        id: 5,
+        position: "-238px 0px",
+    },
+    {
+        id: 6,
+        position: "-297px 0px",
+    },
+    {
+        id: 7,
+        position: "-356px 0px",
+    },
+];
+
 export default function FeedCard({ item }: Props) {
     const [showLikesPanel, setShowLikesPanel] = useState(false);
     const likesButtonEl = useRef<HTMLDivElement | null>(null);
 
-    console.log("showLikesPanel:", showLikesPanel);
     const date = getMonthDayAtTime(Number(item.date));
 
     return (
@@ -218,10 +256,17 @@ export default function FeedCard({ item }: Props) {
                 }}
                 hideBackdrop
             >
-                <div style={{ width: "100px" }}>
-                    You can change who sees your gender on your profile later. Select Custom to choose another gender, or if you'd rather not say.
+                <div css={emojiPanel}>
+                    {emojis.map((prop, i) => (
+                        <LikeSmile position={prop.position} key={prop.id} i={i} />
+                    ))}
                 </div>
             </Popover>
+            <div css={emojiPanel}>
+                {emojis.map((prop, i) => (
+                    <LikeSmile position={prop.position} key={prop.id} i={i} />
+                ))}
+            </div>
         </div>
     );
 }
