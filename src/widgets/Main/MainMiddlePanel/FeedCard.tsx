@@ -9,6 +9,7 @@ import FeedCardButton from "./FeedCardButton";
 import { useRef, useState } from "react";
 import LikeSmile from "./LikeSmile";
 import Popper from "@mui/material/Popper";
+import Fade from "@mui/material/Fade";
 
 type LikesObj = {
     like: number;
@@ -251,12 +252,16 @@ export default function FeedCard({ item }: Props) {
                     </div>
                 </div>
             </div>
-            <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current}>
-                <div css={emojiPanel} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
-                    {emojis.map((prop, i) => (
-                        <LikeSmile position={prop.position} key={prop.id} i={i} />
-                    ))}
-                </div>
+            <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition>
+                {({ TransitionProps }) => (
+                    <Fade {...TransitionProps} timeout={350}>
+                        <div css={emojiPanel} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
+                            {emojis.map((prop, i) => (
+                                <LikeSmile position={prop.position} key={prop.id} i={i} />
+                            ))}
+                        </div>
+                    </Fade>
+                )}
             </Popper>
         </div>
     );
