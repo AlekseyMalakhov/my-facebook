@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 type Props = {
     position: string;
     i: number;
+    onClick?: () => void;
 };
 
 const container = css({
@@ -15,7 +16,7 @@ const container = css({
     transition: "transform 0.2s",
 });
 
-export default function LikeSmile({ position, i }: Props) {
+export default function LikeSmile({ position, i, onClick }: Props) {
     const left = (-i * 6).toString() + "px";
     const iconStyle2 = {
         backgroundPosition: position,
@@ -29,7 +30,7 @@ export default function LikeSmile({ position, i }: Props) {
     };
 
     return (
-        <div css={container} style={contStyle}>
+        <div css={container} style={contStyle} onClick={onClick}>
             <div style={iconStyle2}></div>
         </div>
     );

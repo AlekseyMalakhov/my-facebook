@@ -252,12 +252,12 @@ export default function FeedCard({ item }: Props) {
                     </div>
                 </div>
             </div>
-            <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition>
+            <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top">
                 {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={350}>
                         <div css={emojiPanel} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
                             {emojis.map((prop, i) => (
-                                <LikeSmile position={prop.position} key={prop.id} i={i} />
+                                <LikeSmile position={prop.position} key={prop.id} i={i} onClick={() => setShowLikesPanel(false)} />
                             ))}
                         </div>
                     </Fade>
