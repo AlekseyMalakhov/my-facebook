@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import CrossCloseButton from "../../../features/CrossCloseButton";
 import ThreeDotsButton from "../../../features/ThreeDotsButton";
 import FeedCardButton from "./FeedCardButton";
-import { Popover } from "@mui/material";
 import { useRef, useState } from "react";
 import LikeSmile from "./LikeSmile";
+import Popper from "@mui/material/Popper";
 
 type LikesObj = {
     like: number;
@@ -150,6 +150,16 @@ const emojiPanel = css({
     alignItems: "center",
     borderRadius: "23px",
     position: "relative",
+    width: "329px",
+    border: "1px solid grey",
+    backgroundColor: "white",
+});
+
+const popover = css({
+    "&.MuiPopover-root .MuiPaper-root": {
+        backgroundColor: "transparent",
+        boxShadow: "none",
+    },
 });
 
 const emojis = [
@@ -241,32 +251,13 @@ export default function FeedCard({ item }: Props) {
                     </div>
                 </div>
             </div>
-            <Popover
-                sx={{ pointerEvents: "none" }}
-                open={showLikesPanel}
-                anchorEl={likesButtonEl.current}
-                onClose={() => setShowLikesPanel(false)}
-                anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "center",
-                }}
-                transformOrigin={{
-                    vertical: "bottom",
-                    horizontal: "center",
-                }}
-                hideBackdrop
-            >
-                <div css={emojiPanel}>
+            <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current}>
+                <div css={emojiPanel} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
                     {emojis.map((prop, i) => (
                         <LikeSmile position={prop.position} key={prop.id} i={i} />
                     ))}
                 </div>
-            </Popover>
-            <div css={emojiPanel}>
-                {emojis.map((prop, i) => (
-                    <LikeSmile position={prop.position} key={prop.id} i={i} />
-                ))}
-            </div>
+            </Popper>
         </div>
     );
 }
