@@ -244,7 +244,12 @@ export default function FeedCard({ item }: Props) {
                 </div>
                 <div css={bottomContainer}>
                     <div css={bottomButtons}>
-                        <div ref={likesButtonEl} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
+                        <div
+                            ref={likesButtonEl}
+                            onMouseEnter={() => setShowLikesPanel(true)}
+                            onMouseLeave={() => setShowLikesPanel(false)}
+                            style={{ flex: 1 }}
+                        >
                             <FeedCardButton type="like" />
                         </div>
                         <FeedCardButton type="comment" />
