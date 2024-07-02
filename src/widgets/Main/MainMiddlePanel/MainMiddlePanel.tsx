@@ -4,6 +4,7 @@ import FeedCard from "./FeedCard";
 
 const container = css({
     maxWidth: "680px",
+    minWidth: "550px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

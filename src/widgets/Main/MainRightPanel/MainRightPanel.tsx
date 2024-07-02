@@ -3,6 +3,10 @@ import AddIcon from "@mui/icons-material/Add";
 
 const container = css({
     flex: 1,
+    minWidth: "280px",
+    "@media only screen and (max-width: 900px)": {
+        display: "none",
+    },
 });
 const title = css({
     paddingTop: "28px",
