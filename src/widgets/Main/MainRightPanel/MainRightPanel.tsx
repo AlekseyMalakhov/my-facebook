@@ -3,7 +3,6 @@ import AddIcon from "@mui/icons-material/Add";
 
 const container = css({
     flex: 1,
-    marginLeft: "32px",
 });
 const title = css({
     paddingTop: "28px",

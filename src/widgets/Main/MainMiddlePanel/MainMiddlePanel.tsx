@@ -8,6 +8,8 @@ const container = css({
     flexDirection: "column",
     alignItems: "center",
     paddingTop: "20px",
+    paddingLeft: "32px",
+    paddingRight: "32px",
 });
 
 export default function MainMiddlePanel() {

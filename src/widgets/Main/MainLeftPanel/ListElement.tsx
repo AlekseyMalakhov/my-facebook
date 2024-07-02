@@ -34,6 +34,7 @@ type Props = {
 const container = css({
     paddingLeft: "8px",
     paddingRight: "8px",
+    maxWidth: "360px",
 });
 
 const container2 = css({

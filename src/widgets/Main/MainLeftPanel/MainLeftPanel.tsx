@@ -9,6 +9,9 @@ const container = css({
     flex: 1,
     marginTop: "16px",
     marginBottom: "30px",
+    "@media only screen and (max-width: 1100px)": {
+        display: "none",
+    },
 });
 
 export default function MainLeftPanel() {
