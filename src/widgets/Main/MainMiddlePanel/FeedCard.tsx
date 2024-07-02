@@ -10,6 +10,8 @@ import { useRef, useState } from "react";
 import LikeSmile from "./LikeSmile";
 import Popper from "@mui/material/Popper";
 import Fade from "@mui/material/Fade";
+import CommentPanel from "./CommentPanel/CommentPanel";
+import { Dialog } from "@mui/material";
 
 type LikesObj = {
     like: number;
@@ -197,8 +199,20 @@ const emojis = [
 export default function FeedCard({ item }: Props) {
     const [showLikesPanel, setShowLikesPanel] = useState(false);
     const likesButtonEl = useRef<HTMLDivElement | null>(null);
+    const [showCommentPanel, setShowCommentPanel] = useState(false);
+    const [showDialog, setShowDialog] = useState(false);
 
     const date = getMonthDayAtTime(Number(item.date));
+
+    const showComments = () => {
+        setShowCommentPanel(true);
+        setShowDialog(true);
+    };
+
+    const closeDialog = () => {
+        setShowCommentPanel(false);
+        setShowDialog(false);
+    };
 
     return (
         <div css={container}>
@@ -238,7 +252,9 @@ export default function FeedCard({ item }: Props) {
                         <div style={{ paddingLeft: "5px", color: "#65676b" }}>{item.likesNumber}</div>
                     </div>
                     <div css={commentsNumber}>
-                        <div style={{ padding: "0 8px" }}>{item.comments.length} comments</div>
+                        <div style={{ padding: "0 8px", cursor: "pointer" }} onClick={showComments}>
+                            {item.comments.length} comments
+                        </div>
                         <div style={{ padding: "0 8px" }}>{item.comments.length} shares</div>
                     </div>
                 </div>
@@ -256,6 +272,7 @@ export default function FeedCard({ item }: Props) {
                         <FeedCardButton type="share" />
                     </div>
                 </div>
+                {showCommentPanel ? <CommentPanel /> : null}
             </div>
             <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top">
                 {({ TransitionProps }) => (
@@ -268,6 +285,9 @@ export default function FeedCard({ item }: Props) {
                     </Fade>
                 )}
             </Popper>
+            <Dialog onClose={closeDialog} open={showDialog}>
+                hehe
+            </Dialog>
         </div>
     );
 }
