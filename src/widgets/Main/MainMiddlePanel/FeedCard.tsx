@@ -39,6 +39,7 @@ type FeedItem = {
 
 type Props = {
     item: FeedItem;
+    asDialog?: boolean;
 };
 
 const container = css({
@@ -196,21 +197,20 @@ const emojis = [
     },
 ];
 
-export default function FeedCard({ item }: Props) {
+export default function FeedCard({ item, asDialog }: Props) {
     const [showLikesPanel, setShowLikesPanel] = useState(false);
     const likesButtonEl = useRef<HTMLDivElement | null>(null);
-    const [showCommentPanel, setShowCommentPanel] = useState(false);
     const [showDialog, setShowDialog] = useState(false);
 
     const date = getMonthDayAtTime(Number(item.date));
 
     const showComments = () => {
-        setShowCommentPanel(true);
-        setShowDialog(true);
+        if (!showDialog) {
+            setShowDialog(true);
+        }
     };
 
     const closeDialog = () => {
-        setShowCommentPanel(false);
         setShowDialog(false);
     };
 
@@ -272,7 +272,7 @@ export default function FeedCard({ item }: Props) {
                         <FeedCardButton type="share" />
                     </div>
                 </div>
-                {showCommentPanel ? <CommentPanel /> : null}
+                {asDialog ? <CommentPanel /> : null}
             </div>
             <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top">
                 {({ TransitionProps }) => (
@@ -286,7 +286,7 @@ export default function FeedCard({ item }: Props) {
                 )}
             </Popper>
             <Dialog onClose={closeDialog} open={showDialog}>
-                hehe
+                <FeedCard item={item} asDialog />
             </Dialog>
         </div>
     );
