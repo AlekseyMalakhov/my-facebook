@@ -1,10 +1,4 @@
 import { css } from "@emotion/react";
-import AccountIcon from "../../../../shared/svg/AccountIcon";
-import { getMonthDayAtTime } from "../../../../shared/utils";
-import PublicGroupIcon from "../../../../shared/svg/PublicGroupIcon";
-import { Link } from "react-router-dom";
-import CrossCloseButton from "../../../../features/CrossCloseButton";
-import ThreeDotsButton from "../../../../features/ThreeDotsButton";
 import FeedCardButton from "./FeedCardButton";
 import { useRef, useState } from "react";
 import LikeSmile from "../LikeSmile";
@@ -12,6 +6,7 @@ import Popper from "@mui/material/Popper";
 import Fade from "@mui/material/Fade";
 import CommentPanel from "../CommentPanel/CommentPanel";
 import { Dialog } from "@mui/material";
+import FeedCardHeader from "./FeedCardHeader";
 
 type LikesObj = {
     like: number;
@@ -25,7 +20,7 @@ type Comment = {
     date: string;
 };
 
-type FeedItem = {
+export type FeedItem = {
     id: number;
     author: string;
     date: string;
@@ -52,45 +47,6 @@ const container = css({
     width: "100%",
     boxSizing: "border-box",
     marginBottom: "16px",
-});
-
-const header = css({
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    padding: "0 8px",
-    boxSizing: "border-box",
-});
-
-const userData = css({
-    display: "flex",
-    alignItems: "center",
-});
-
-const userText = css({
-    marginLeft: "8px",
-});
-
-const userName = css({
-    fontFamily: "Segoe UI Semibold",
-    fontSize: "15px",
-    fontWeight: 600,
-    lineHeight: "20px",
-    marginBottom: "5px",
-});
-
-const dateDiv = css({
-    fontFamily: "Segoe UI",
-    color: "#65676B",
-    fontSize: "13px",
-    lineHeight: "16px",
-    display: "flex",
-    alignItems: "center",
-});
-const headerButtons = css({
-    display: "flex",
-    alignItems: "center",
 });
 
 const image = css({
@@ -202,8 +158,6 @@ export default function FeedCard({ item, asDialog }: Props) {
     const likesButtonEl = useRef<HTMLDivElement | null>(null);
     const [showDialog, setShowDialog] = useState(false);
 
-    const date = getMonthDayAtTime(Number(item.date));
-
     const showComments = () => {
         if (!showDialog) {
             setShowDialog(true);
@@ -216,31 +170,7 @@ export default function FeedCard({ item, asDialog }: Props) {
 
     return (
         <div css={container}>
-            <div css={header}>
-                <div css={userData}>
-                    <div style={{ width: "40px" }}>
-                        <AccountIcon width={40} height={40} />
-                    </div>
-                    <div css={userText}>
-                        <div css={userName}>
-                            {item.author}
-                            <span>&nbsp;·&nbsp;</span>
-                            <Link to={""}>
-                                <span style={{ color: "#0064D1" }}>Follow</span>
-                            </Link>
-                        </div>
-                        <div css={dateDiv}>
-                            {date}
-                            <span>&nbsp;·&nbsp;</span>
-                            <PublicGroupIcon width={12} height={12} viewBox="0 0 16 16" />
-                        </div>
-                    </div>
-                </div>
-                <div css={headerButtons}>
-                    <ThreeDotsButton onClick={() => null} />
-                    <CrossCloseButton onClick={() => null} style={{ marginLeft: "5px" }} />
-                </div>
-            </div>
+            <FeedCardHeader item={item} />
             <div css={image}>
                 <img src={item.img} style={{ width: "100%" }} />
             </div>
