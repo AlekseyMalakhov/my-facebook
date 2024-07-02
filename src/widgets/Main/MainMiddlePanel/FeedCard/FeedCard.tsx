@@ -1,16 +1,16 @@
 import { css } from "@emotion/react";
-import AccountIcon from "../../../shared/svg/AccountIcon";
-import { getMonthDayAtTime } from "../../../shared/utils";
-import PublicGroupIcon from "../../../shared/svg/PublicGroupIcon";
+import AccountIcon from "../../../../shared/svg/AccountIcon";
+import { getMonthDayAtTime } from "../../../../shared/utils";
+import PublicGroupIcon from "../../../../shared/svg/PublicGroupIcon";
 import { Link } from "react-router-dom";
-import CrossCloseButton from "../../../features/CrossCloseButton";
-import ThreeDotsButton from "../../../features/ThreeDotsButton";
+import CrossCloseButton from "../../../../features/CrossCloseButton";
+import ThreeDotsButton from "../../../../features/ThreeDotsButton";
 import FeedCardButton from "./FeedCardButton";
 import { useRef, useState } from "react";
-import LikeSmile from "./LikeSmile";
+import LikeSmile from "../LikeSmile";
 import Popper from "@mui/material/Popper";
 import Fade from "@mui/material/Fade";
-import CommentPanel from "./CommentPanel/CommentPanel";
+import CommentPanel from "../CommentPanel/CommentPanel";
 import { Dialog } from "@mui/material";
 
 type LikesObj = {
