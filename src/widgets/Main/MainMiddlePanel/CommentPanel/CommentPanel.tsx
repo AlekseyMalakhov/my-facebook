@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { comments } from "./fakeComments";
+import Comment from "./Comment";
 
 const container = css({
     width: "100%",
@@ -8,15 +9,11 @@ const container = css({
     marginTop: "6px",
 });
 
-const itemStyle = css({});
-
 export default function CommentPanel() {
     return (
         <div css={container}>
             {comments.map((item) => (
-                <div css={itemStyle} key={item.id}>
-                    {item.text}
-                </div>
+                <Comment key={item.id} item={item} />
             ))}
         </div>
     );
