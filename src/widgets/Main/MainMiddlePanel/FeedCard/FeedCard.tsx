@@ -7,6 +7,7 @@ import Fade from "@mui/material/Fade";
 import CommentPanel from "../CommentPanel/CommentPanel";
 import { Dialog } from "@mui/material";
 import FeedCardHeader from "./FeedCardHeader";
+import FeedCardCommentHeader from "./FeedCardCommentHeader";
 
 type LikesObj = {
     like: number;
@@ -43,7 +44,7 @@ const container = css({
     alignItems: "center",
     backgroundColor: "white",
     borderRadius: "8px",
-    padding: "12px 0",
+    padding: "0 0 12px 0",
     width: "100%",
     boxSizing: "border-box",
     marginBottom: "16px",
@@ -179,7 +180,8 @@ export default function FeedCard({ item, asDialog }: Props) {
 
     return (
         <div css={container}>
-            <FeedCardHeader item={item} />
+            {asDialog ? <FeedCardCommentHeader name={item.author} /> : null}
+            <FeedCardHeader item={item} asDialog={asDialog} />
             <div css={description}>
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                 cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

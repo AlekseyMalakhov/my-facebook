@@ -12,7 +12,7 @@ const header = css({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    padding: "0 16px",
+    padding: "12px 16px 0px 16px",
     boxSizing: "border-box",
 });
 
@@ -48,9 +48,10 @@ const headerButtons = css({
 
 type Props = {
     item: FeedItem;
+    asDialog?: boolean;
 };
 
-export default function FeedCardHeader({ item }: Props) {
+export default function FeedCardHeader({ item, asDialog }: Props) {
     const date = getMonthDayAtTime(Number(item.date));
 
     return (
@@ -76,7 +77,7 @@ export default function FeedCardHeader({ item }: Props) {
             </div>
             <div css={headerButtons}>
                 <ThreeDotsButton onClick={() => null} />
-                <CrossCloseButton onClick={() => null} style={{ marginLeft: "5px" }} />
+                {asDialog ? null : <CrossCloseButton onClick={() => null} style={css({ marginLeft: "5px" })} />}
             </div>
         </div>
     );
