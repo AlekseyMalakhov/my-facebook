@@ -170,13 +170,12 @@ export default function FeedCard({ item, asDialog, closeDialogFromParent }: Prop
     const [showDialog, setShowDialog] = useState(false);
 
     const showComments = () => {
-        if (!showDialog) {
+        if (!showDialog && !asDialog) {
             setShowDialog(true);
         }
     };
 
     const closeDialog = () => {
-        console.log("lala");
         setShowDialog(false);
     };
 
