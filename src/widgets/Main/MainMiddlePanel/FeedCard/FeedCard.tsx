@@ -36,6 +36,7 @@ export type FeedItem = {
 type Props = {
     item: FeedItem;
     asDialog?: boolean;
+    closeDialogFromParent: () => void;
 };
 
 const container = css({
@@ -163,7 +164,7 @@ const emojis = [
     },
 ];
 
-export default function FeedCard({ item, asDialog }: Props) {
+export default function FeedCard({ item, asDialog, closeDialogFromParent }: Props) {
     const [showLikesPanel, setShowLikesPanel] = useState(false);
     const likesButtonEl = useRef<HTMLDivElement | null>(null);
     const [showDialog, setShowDialog] = useState(false);
@@ -175,12 +176,13 @@ export default function FeedCard({ item, asDialog }: Props) {
     };
 
     const closeDialog = () => {
+        console.log("lala");
         setShowDialog(false);
     };
 
     return (
         <div css={container}>
-            {asDialog ? <FeedCardCommentHeader name={item.author} /> : null}
+            {asDialog ? <FeedCardCommentHeader name={item.author} onClick={closeDialogFromParent} /> : null}
             <FeedCardHeader item={item} asDialog={asDialog} />
             <div css={description}>
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
@@ -231,7 +233,7 @@ export default function FeedCard({ item, asDialog }: Props) {
                 )}
             </Popper>
             <Dialog onClose={closeDialog} open={showDialog}>
-                <FeedCard item={item} asDialog />
+                <FeedCard item={item} asDialog closeDialogFromParent={closeDialog} />
             </Dialog>
         </div>
     );

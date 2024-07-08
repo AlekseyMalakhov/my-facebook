@@ -41,16 +41,17 @@ const button = css({
 
 type Props = {
     name: string;
+    onClick: () => void;
 };
 
-export default function FeedCardCommentHeader({ name }: Props) {
+export default function FeedCardCommentHeader({ name, onClick }: Props) {
     return (
         <div css={container}>
             <div css={header}>
                 <div css={title}>
                     <h2>{name}'s Post</h2>
                 </div>
-                <CrossCloseButton onClick={() => null} iconButtonCSS={button} style={css({ marginRight: "18px" })} iconStyle={{ color: "#050505" }} />
+                <CrossCloseButton onClick={onClick} iconButtonCSS={button} style={css({ marginRight: "18px" })} iconStyle={{ color: "#050505" }} />
             </div>
             <hr css={divider}></hr>
         </div>
