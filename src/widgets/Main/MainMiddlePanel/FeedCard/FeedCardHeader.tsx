@@ -12,7 +12,7 @@ const header = css({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    padding: "0 8px",
+    padding: "0 16px",
     boxSizing: "border-box",
 });
 

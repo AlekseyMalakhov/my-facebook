@@ -43,7 +43,7 @@ const container = css({
     alignItems: "center",
     backgroundColor: "white",
     borderRadius: "8px",
-    padding: "8px 0",
+    padding: "12px 0",
     width: "100%",
     boxSizing: "border-box",
     marginBottom: "16px",
@@ -122,6 +122,15 @@ const popover = css({
     },
 });
 
+const description = css({
+    padding: "4px 16px 0px 16px",
+    fontFamily: "Segoe UI Historic",
+    fontSize: ".9375rem",
+    lineHeight: "1.3333",
+    fontWeight: 400,
+    color: "#050505",
+});
+
 const emojis = [
     {
         id: 1,
@@ -171,6 +180,10 @@ export default function FeedCard({ item, asDialog }: Props) {
     return (
         <div css={container}>
             <FeedCardHeader item={item} />
+            <div css={description}>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
             <div css={image}>
                 <img src={item.img} style={{ width: "100%" }} />
             </div>
