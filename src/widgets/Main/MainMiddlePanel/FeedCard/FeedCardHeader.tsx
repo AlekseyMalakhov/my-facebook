@@ -58,7 +58,7 @@ export default function FeedCardHeader({ item, asDialog }: Props) {
         <div css={header}>
             <div css={userData}>
                 <div style={{ width: "40px" }}>
-                    <AccountIcon width={40} height={40} />
+                    <AccountIcon width={40} />
                 </div>
                 <div css={userText}>
                     <div css={userName}>

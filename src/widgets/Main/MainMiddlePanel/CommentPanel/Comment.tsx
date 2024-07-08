@@ -16,7 +16,7 @@ type Props = {
 export default function Comment({ item }: Props) {
     return (
         <div css={container}>
-            <AccountIcon width={32} height={32} />
+            <AccountIcon width={32} />
             <div>{item.authorName}</div>
             <div>{item.text}</div>
         </div>

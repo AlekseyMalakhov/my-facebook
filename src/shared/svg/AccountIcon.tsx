@@ -3,7 +3,6 @@ import { CSSProperties } from "react";
 
 export type AccountIconProps = {
     width: number;
-    height: number;
     style?: CSSProperties;
 };
 
@@ -30,9 +29,13 @@ const icon = css({
 });
 
 export default function AccountIcon(props: AccountIconProps) {
+    const props2 = {
+        ...props,
+        height: props.width,
+    };
     return (
         <div css={container}>
-            <img src="/accont_icon.png" {...props} css={icon} />
+            <img src="/accont_icon.png" {...props2} css={icon} />
             <div css={cover}></div>
         </div>
     );

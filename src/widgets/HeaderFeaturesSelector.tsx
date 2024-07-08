@@ -66,7 +66,7 @@ export default function HeaderFeaturesSelector() {
                 <MessengerIcon width={22} height={22} sx={{ color: "#1c1e21" }} />
             </IconButton>
             <div aria-label="account" css={[menu, accountStyle]}>
-                <AccountIcon width={40} height={40} />
+                <AccountIcon width={40} />
             </div>
         </div>
     );
