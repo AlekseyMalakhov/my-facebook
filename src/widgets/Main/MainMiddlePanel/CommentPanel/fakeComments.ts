@@ -14,4 +14,9 @@ export const comments = [
         authorName: "Elementum",
         text: "Fames ac turpis egestas maecenas pharetra convallis posuere.",
     },
+    {
+        id: 4,
+        authorName: "Faucibus",
+        text: "Nullam eget felis eget nunc lobortis mattis. Accumsan sit amet nulla facilisi morbi tempus iaculis urna.",
+    },
 ];
