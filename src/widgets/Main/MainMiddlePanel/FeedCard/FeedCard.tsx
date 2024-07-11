@@ -1,14 +1,12 @@
 import { css } from "@emotion/react";
-import FeedCardButton from "./FeedCardButton";
 import { useRef, useState } from "react";
 import LikeSmile from "../LikeSmile";
 import Popper from "@mui/material/Popper";
 import Fade from "@mui/material/Fade";
-import CommentPanel from "../CommentPanel/CommentPanel";
 import { Dialog } from "@mui/material";
-import FeedCardHeader from "./FeedCardHeader";
 import FeedCardCommentHeader from "./FeedCardCommentHeader";
 import { CustomScroll } from "react-custom-scroll";
+import FeedCardMain from "./FeedCardMain";
 
 type LikesObj = {
     like: number;
@@ -52,62 +50,6 @@ const container = css({
     marginBottom: "16px",
 });
 
-const image = css({
-    marginTop: "16px",
-});
-
-const footer = css({
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "0 8px",
-    boxSizing: "border-box",
-});
-
-const footerLikes = css({
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "10px 8px",
-});
-
-const likes = css({
-    fontFamily: "Segoe UI",
-    display: "flex",
-    alignItems: "center",
-    marginLeft: "8px",
-    lineHeight: "1.3333",
-});
-
-const commentsNumber = css({
-    fontFamily: "Segoe UI",
-    display: "flex",
-    alignItems: "center",
-    color: "#65676b",
-    fontSize: "15px",
-    lineHeight: "20px",
-    fontWeight: 400,
-});
-
-const bottomContainer = css({
-    width: "100%",
-    padding: "0 8px",
-    boxSizing: "border-box",
-});
-
-const bottomButtons = css({
-    width: "100%",
-    padding: "0 8px",
-    paddingTop: "6px",
-    boxSizing: "border-box",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    borderTop: "1px solid #CED0D4",
-});
-
 const emojiPanel = css({
     display: "flex",
     alignItems: "center",
@@ -123,15 +65,6 @@ const popover = css({
         backgroundColor: "transparent",
         boxShadow: "none",
     },
-});
-
-const description = css({
-    padding: "4px 16px 0px 16px",
-    fontFamily: "Segoe UI Historic",
-    fontSize: ".9375rem",
-    lineHeight: "1.3333",
-    fontWeight: 400,
-    color: "#050505",
 });
 
 const emojis = [
@@ -183,9 +116,10 @@ export default function FeedCard({ item, asDialog, closeDialogFromParent }: Prop
     return (
         <div css={container}>
             {asDialog ? <FeedCardCommentHeader name={item.author} onClick={closeDialogFromParent} /> : null}
-            <CustomScroll>
-                <div style={{ height: "600px" }}>
-                    <FeedCardHeader item={item} asDialog={asDialog} />
+            {asDialog ? (
+                <CustomScroll>
+                    <div style={{ height: "600px" }}>
+                        {/* <FeedCardHeader item={item} asDialog={asDialog} />
                     <div css={description}>
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -222,9 +156,17 @@ export default function FeedCard({ item, asDialog, closeDialogFromParent }: Prop
                             </div>
                         </div>
                         {asDialog ? <CommentPanel /> : null}
+                    </div> */}
                     </div>
-                </div>
-            </CustomScroll>
+                </CustomScroll>
+            ) : null}
+            <FeedCardMain
+                item={item}
+                asDialog={asDialog}
+                showComments={showComments}
+                setShowLikesPanel={setShowLikesPanel}
+                likesButtonEl={likesButtonEl}
+            />
 
             <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top">
                 {({ TransitionProps }) => (
