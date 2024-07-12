@@ -39,6 +39,7 @@ const emojiPanel = css({
 });
 
 const popover = css({
+    zIndex: 1305,
     "&.MuiPopover-root .MuiPaper-root": {
         backgroundColor: "transparent",
         boxShadow: "none",
