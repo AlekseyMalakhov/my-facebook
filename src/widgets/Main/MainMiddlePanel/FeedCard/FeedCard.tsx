@@ -1,12 +1,10 @@
 import { css } from "@emotion/react";
 import { useRef, useState } from "react";
-import LikeSmile from "../LikeSmile";
-import Popper from "@mui/material/Popper";
-import Fade from "@mui/material/Fade";
 import { Dialog } from "@mui/material";
 import FeedCardCommentHeader from "./FeedCardCommentHeader";
 import { CustomScroll } from "react-custom-scroll";
 import FeedCardMain from "./FeedCardMain";
+import FeedCardLikesPanel from "./FeedCardLikesPanel";
 
 type LikesObj = {
     like: number;
@@ -50,54 +48,6 @@ const container = css({
     marginBottom: "16px",
 });
 
-const emojiPanel = css({
-    display: "flex",
-    alignItems: "center",
-    borderRadius: "23px",
-    position: "relative",
-    width: "329px",
-    border: "1px solid grey",
-    backgroundColor: "white",
-});
-
-const popover = css({
-    "&.MuiPopover-root .MuiPaper-root": {
-        backgroundColor: "transparent",
-        boxShadow: "none",
-    },
-});
-
-const emojis = [
-    {
-        id: 1,
-        position: "-2px 0px",
-    },
-    {
-        id: 2,
-        position: "-61px 0px",
-    },
-    {
-        id: 3,
-        position: "-120px 0px",
-    },
-    {
-        id: 4,
-        position: "-179px 0px",
-    },
-    {
-        id: 5,
-        position: "-238px 0px",
-    },
-    {
-        id: 6,
-        position: "-297px 0px",
-    },
-    {
-        id: 7,
-        position: "-356px 0px",
-    },
-];
-
 export default function FeedCard({ item, asDialog, closeDialogFromParent }: Props) {
     const [showLikesPanel, setShowLikesPanel] = useState(false);
     const likesButtonEl = useRef<HTMLDivElement | null>(null);
@@ -136,17 +86,7 @@ export default function FeedCard({ item, asDialog, closeDialogFromParent }: Prop
                 />
             )}
 
-            <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top">
-                {({ TransitionProps }) => (
-                    <Fade {...TransitionProps} timeout={350}>
-                        <div css={emojiPanel} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
-                            {emojis.map((prop, i) => (
-                                <LikeSmile position={prop.position} key={prop.id} i={i} onClick={() => setShowLikesPanel(false)} />
-                            ))}
-                        </div>
-                    </Fade>
-                )}
-            </Popper>
+            <FeedCardLikesPanel showLikesPanel={showLikesPanel} likesButtonEl={likesButtonEl} setShowLikesPanel={setShowLikesPanel} />
             <Dialog onClose={closeDialog} open={showDialog}>
                 <FeedCard item={item} asDialog closeDialogFromParent={closeDialog} />
             </Dialog>
