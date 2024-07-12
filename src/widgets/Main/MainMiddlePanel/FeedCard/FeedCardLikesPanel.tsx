@@ -85,7 +85,7 @@ const emojis = [
 
 export default function FeedCardLikesPanel({ showLikesPanel, likesButtonEl, setShowLikesPanel }: Props) {
     return (
-        <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top">
+        <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top-start">
             {({ TransitionProps }) => (
                 <Fade {...TransitionProps} timeout={350}>
                     <div css={emojiPanel} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
