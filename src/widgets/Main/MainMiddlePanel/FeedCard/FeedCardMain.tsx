@@ -2,6 +2,8 @@ import { css } from "@emotion/react";
 import FeedCardButton from "./FeedCardButton";
 import CommentPanel from "../CommentPanel/CommentPanel";
 import FeedCardHeader from "./FeedCardHeader";
+import FeedCardLikesPanel from "./FeedCardLikesPanel";
+import { Fragment, useRef, useState } from "react";
 
 type LikesObj = {
     like: number;
@@ -31,8 +33,6 @@ type Props = {
     item: FeedItem;
     asDialog?: boolean;
     showComments: () => void;
-    setShowLikesPanel: (arg: boolean) => void;
-    likesButtonEl: React.MutableRefObject<HTMLDivElement | null>;
 };
 
 const image = css({
@@ -102,47 +102,53 @@ const description = css({
 
 const container = css({});
 
-export default function FeedCardMain({ item, asDialog, showComments, setShowLikesPanel, likesButtonEl }: Props) {
+export default function FeedCardMain({ item, asDialog, showComments }: Props) {
+    const [showLikesPanel, setShowLikesPanel] = useState(false);
+    const likesButtonEl = useRef<HTMLDivElement | null>(null);
+
     return (
-        <div css={container} style={asDialog ? { height: "calc(100vh - 153px)" } : {}}>
-            <FeedCardHeader item={item} asDialog={asDialog} />
-            <div css={description}>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-            <div css={image}>
-                <img src={item.img} style={{ width: "100%" }} />
-            </div>
-            <div css={footer}>
-                <div css={footerLikes}>
-                    <div css={likes}>
-                        <img src="/like.svg" width={18} height={18}></img>
-                        <img src="/heart.svg" width={18} height={18}></img>
-                        <div style={{ paddingLeft: "5px", color: "#65676b" }}>{item.likesNumber}</div>
-                    </div>
-                    <div css={commentsNumber}>
-                        <div style={{ padding: "0 8px", cursor: "pointer" }} onClick={showComments}>
-                            {item.comments.length} comments
-                        </div>
-                        <div style={{ padding: "0 8px" }}>{item.comments.length} shares</div>
-                    </div>
+        <Fragment>
+            <div css={container} style={asDialog ? { height: "calc(100vh - 153px)" } : {}}>
+                <FeedCardHeader item={item} asDialog={asDialog} />
+                <div css={description}>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
-                <div css={bottomContainer}>
-                    <div css={bottomButtons}>
-                        <div
-                            ref={likesButtonEl}
-                            onMouseEnter={() => setShowLikesPanel(true)}
-                            onMouseLeave={() => setShowLikesPanel(false)}
-                            style={{ flex: 1 }}
-                        >
-                            <FeedCardButton type="like" />
-                        </div>
-                        <FeedCardButton type="comment" />
-                        <FeedCardButton type="share" />
-                    </div>
+                <div css={image}>
+                    <img src={item.img} style={{ width: "100%" }} />
                 </div>
-                {asDialog ? <CommentPanel /> : null}
+                <div css={footer}>
+                    <div css={footerLikes}>
+                        <div css={likes}>
+                            <img src="/like.svg" width={18} height={18}></img>
+                            <img src="/heart.svg" width={18} height={18}></img>
+                            <div style={{ paddingLeft: "5px", color: "#65676b" }}>{item.likesNumber}</div>
+                        </div>
+                        <div css={commentsNumber}>
+                            <div style={{ padding: "0 8px", cursor: "pointer" }} onClick={showComments}>
+                                {item.comments.length} comments
+                            </div>
+                            <div style={{ padding: "0 8px" }}>{item.comments.length} shares</div>
+                        </div>
+                    </div>
+                    <div css={bottomContainer}>
+                        <div css={bottomButtons}>
+                            <div
+                                ref={likesButtonEl}
+                                onMouseEnter={() => setShowLikesPanel(true)}
+                                onMouseLeave={() => setShowLikesPanel(false)}
+                                style={{ flex: 1 }}
+                            >
+                                <FeedCardButton type="like" />
+                            </div>
+                            <FeedCardButton type="comment" />
+                            <FeedCardButton type="share" />
+                        </div>
+                    </div>
+                    {asDialog ? <CommentPanel /> : null}
+                </div>
             </div>
-        </div>
+            <FeedCardLikesPanel showLikesPanel={showLikesPanel} likesButtonEl={likesButtonEl} setShowLikesPanel={setShowLikesPanel} />
+        </Fragment>
     );
 }

@@ -1,10 +1,9 @@
 import { css } from "@emotion/react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Dialog } from "@mui/material";
 import FeedCardCommentHeader from "./FeedCardCommentHeader";
 import { CustomScroll } from "react-custom-scroll";
 import FeedCardMain from "./FeedCardMain";
-import FeedCardLikesPanel from "./FeedCardLikesPanel";
 
 type LikesObj = {
     like: number;
@@ -49,8 +48,6 @@ const container = css({
 });
 
 export default function FeedCard({ item, asDialog, closeDialogFromParent }: Props) {
-    const [showLikesPanel, setShowLikesPanel] = useState(false);
-    const likesButtonEl = useRef<HTMLDivElement | null>(null);
     const [showDialog, setShowDialog] = useState(false);
 
     const showComments = () => {
@@ -68,25 +65,12 @@ export default function FeedCard({ item, asDialog, closeDialogFromParent }: Prop
             {asDialog ? <FeedCardCommentHeader name={item.author} onClick={closeDialogFromParent} /> : null}
             {asDialog ? (
                 <CustomScroll heightRelativeToParent="100%">
-                    <FeedCardMain
-                        item={item}
-                        asDialog={asDialog}
-                        showComments={showComments}
-                        setShowLikesPanel={setShowLikesPanel}
-                        likesButtonEl={likesButtonEl}
-                    />
+                    <FeedCardMain item={item} asDialog={asDialog} showComments={showComments} />
                 </CustomScroll>
             ) : (
-                <FeedCardMain
-                    item={item}
-                    asDialog={asDialog}
-                    showComments={showComments}
-                    setShowLikesPanel={setShowLikesPanel}
-                    likesButtonEl={likesButtonEl}
-                />
+                <FeedCardMain item={item} asDialog={asDialog} showComments={showComments} />
             )}
 
-            <FeedCardLikesPanel showLikesPanel={showLikesPanel} likesButtonEl={likesButtonEl} setShowLikesPanel={setShowLikesPanel} />
             <Dialog onClose={closeDialog} open={showDialog}>
                 <FeedCard item={item} asDialog closeDialogFromParent={closeDialog} />
             </Dialog>
