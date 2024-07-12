@@ -104,7 +104,7 @@ const container = css({});
 
 export default function FeedCardMain({ item, asDialog, showComments, setShowLikesPanel, likesButtonEl }: Props) {
     return (
-        <div css={container}>
+        <div css={container} style={asDialog ? { height: "calc(100vh - 153px)" } : {}}>
             <FeedCardHeader item={item} asDialog={asDialog} />
             <div css={description}>
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat

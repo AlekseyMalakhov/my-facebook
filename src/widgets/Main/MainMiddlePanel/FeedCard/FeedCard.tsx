@@ -117,56 +117,24 @@ export default function FeedCard({ item, asDialog, closeDialogFromParent }: Prop
         <div css={container}>
             {asDialog ? <FeedCardCommentHeader name={item.author} onClick={closeDialogFromParent} /> : null}
             {asDialog ? (
-                <CustomScroll>
-                    <div style={{ height: "600px" }}>
-                        {/* <FeedCardHeader item={item} asDialog={asDialog} />
-                    <div css={description}>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                    <div css={image}>
-                        <img src={item.img} style={{ width: "100%" }} />
-                    </div>
-                    <div css={footer}>
-                        <div css={footerLikes}>
-                            <div css={likes}>
-                                <img src="/like.svg" width={18} height={18}></img>
-                                <img src="/heart.svg" width={18} height={18}></img>
-                                <div style={{ paddingLeft: "5px", color: "#65676b" }}>{item.likesNumber}</div>
-                            </div>
-                            <div css={commentsNumber}>
-                                <div style={{ padding: "0 8px", cursor: "pointer" }} onClick={showComments}>
-                                    {item.comments.length} comments
-                                </div>
-                                <div style={{ padding: "0 8px" }}>{item.comments.length} shares</div>
-                            </div>
-                        </div>
-                        <div css={bottomContainer}>
-                            <div css={bottomButtons}>
-                                <div
-                                    ref={likesButtonEl}
-                                    onMouseEnter={() => setShowLikesPanel(true)}
-                                    onMouseLeave={() => setShowLikesPanel(false)}
-                                    style={{ flex: 1 }}
-                                >
-                                    <FeedCardButton type="like" />
-                                </div>
-                                <FeedCardButton type="comment" />
-                                <FeedCardButton type="share" />
-                            </div>
-                        </div>
-                        {asDialog ? <CommentPanel /> : null}
-                    </div> */}
-                    </div>
+                <CustomScroll heightRelativeToParent="100%">
+                    <FeedCardMain
+                        item={item}
+                        asDialog={asDialog}
+                        showComments={showComments}
+                        setShowLikesPanel={setShowLikesPanel}
+                        likesButtonEl={likesButtonEl}
+                    />
                 </CustomScroll>
-            ) : null}
-            <FeedCardMain
-                item={item}
-                asDialog={asDialog}
-                showComments={showComments}
-                setShowLikesPanel={setShowLikesPanel}
-                likesButtonEl={likesButtonEl}
-            />
+            ) : (
+                <FeedCardMain
+                    item={item}
+                    asDialog={asDialog}
+                    showComments={showComments}
+                    setShowLikesPanel={setShowLikesPanel}
+                    likesButtonEl={likesButtonEl}
+                />
+            )}
 
             <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top">
                 {({ TransitionProps }) => (
