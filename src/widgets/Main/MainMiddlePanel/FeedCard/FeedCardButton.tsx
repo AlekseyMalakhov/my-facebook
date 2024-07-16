@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { colors } from "@/shared/cssSettings";
 
 type Props = {
     type: "share" | "comment" | "like";
@@ -32,7 +33,7 @@ const textStyle = css({
     fontWeight: 600,
     lineHeight: "1.3333",
     padding: "6px 4px",
-    color: "#65676B",
+    color: colors.secondaryText,
     userSelect: "none",
 });
 

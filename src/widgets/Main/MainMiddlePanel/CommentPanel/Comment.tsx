@@ -1,5 +1,6 @@
 import AccountIcon from "@/shared/svg/AccountIcon";
 import { css } from "@emotion/react";
+import { colors } from "@/shared/cssSettings";
 
 const container = css({
     display: "flex",
@@ -43,7 +44,7 @@ const panel = css({
 const option = css({
     marginLeft: "8px",
     marginRight: "8px",
-    //color: "#65676B",
+    //color: colors.secondaryText,
     color: "#1c1e21",
     fontWeight: 700,
     fontSize: "12px",
@@ -73,7 +74,7 @@ export default function Comment({ item }: Props) {
                     <div css={text}>{item.text}</div>
                 </div>
                 <ul css={panel}>
-                    <li css={option} style={{ fontWeight: 400, color: "#65676B" }}>
+                    <li css={option} style={{ fontWeight: 400, color: colors.secondaryText }}>
                         4d
                     </li>
                     <li css={option}>Like</li>

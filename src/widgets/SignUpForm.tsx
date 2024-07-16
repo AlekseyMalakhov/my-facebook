@@ -15,6 +15,7 @@ import { Gender, RegDeviceType } from "../gql/graphql";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Link } from "react-router-dom";
+import { colors } from "@/shared/cssSettings";
 
 type Props = {
     handleClose: (event: object, reason: string) => void;
@@ -64,7 +65,7 @@ const selectors = css({
 const helpText = css({
     width: "340px",
     padding: "12px",
-    color: "#65676b",
+    color: colors.secondaryText,
     fontSize: "13px",
 });
 

@@ -4,6 +4,7 @@ import CommentPanel from "../CommentPanel/CommentPanel";
 import FeedCardHeader from "./FeedCardHeader";
 import FeedCardLikesPanel from "./FeedCardLikesPanel";
 import { Fragment, useRef, useState } from "react";
+import { colors } from "@/shared/cssSettings";
 
 type LikesObj = {
     like: number;
@@ -68,7 +69,7 @@ const commentsNumber = css({
     fontFamily: "Segoe UI",
     display: "flex",
     alignItems: "center",
-    color: "#65676b",
+    color: colors.secondaryText,
     fontSize: "15px",
     lineHeight: "20px",
     fontWeight: 400,
@@ -122,7 +123,7 @@ export default function FeedCardMain({ item, asDialog, showComments }: Props) {
                         <div css={likes}>
                             <img src="/like.svg" width={18} height={18}></img>
                             <img src="/heart.svg" width={18} height={18}></img>
-                            <div style={{ paddingLeft: "5px", color: "#65676b" }}>{item.likesNumber}</div>
+                            <div style={{ paddingLeft: "5px", color: colors.secondaryText }}>{item.likesNumber}</div>
                         </div>
                         <div css={commentsNumber}>
                             <div style={{ padding: "0 8px", cursor: "pointer" }} onClick={showComments}>

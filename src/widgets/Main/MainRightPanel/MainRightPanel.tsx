@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import AddIcon from "@mui/icons-material/Add";
+import { colors } from "@/shared/cssSettings";
 
 const container = css({
     flex: 1,
@@ -10,7 +11,7 @@ const container = css({
 });
 const title = css({
     paddingTop: "28px",
-    color: "#65676B",
+    color: colors.secondaryText,
     fontSize: "17px",
     fontWeight: 600,
     lineHeight: 1.18,

@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
+import { colors } from "@/shared/cssSettings";
 
 const container = css({
     marginLeft: "9px",
@@ -23,7 +24,7 @@ const container = css({
     },
     "& .MuiInputBase-input::placeholder": {
         fontFamily: "Segoe UI",
-        color: "#65676B",
+        color: colors.secondaryText,
         fontSize: "15px",
         opacity: "1",
         letterSpacing: "0px",

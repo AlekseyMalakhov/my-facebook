@@ -6,6 +6,7 @@ import CrossCloseButton from "@/features/CrossCloseButton";
 import { FeedItem } from "./FeedCard";
 import { getMonthDayAtTime } from "@/shared/utils";
 import AccountIcon from "@/shared/svg/AccountIcon";
+import { colors } from "@/shared/cssSettings";
 
 const header = css({
     display: "flex",
@@ -35,7 +36,7 @@ const userName = css({
 
 const dateDiv = css({
     fontFamily: "Segoe UI",
-    color: "#65676B",
+    color: colors.secondaryText,
     fontSize: "13px",
     lineHeight: "16px",
     display: "flex",
