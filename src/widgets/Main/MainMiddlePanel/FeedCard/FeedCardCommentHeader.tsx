@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import CrossCloseButton from "@/features/CrossCloseButton";
+import { colors } from "@/shared/cssSettings";
 
 const container = css({
     width: "100%",
@@ -51,7 +52,12 @@ export default function FeedCardCommentHeader({ name, onClick }: Props) {
                 <div css={title}>
                     <h2>{name}'s Post</h2>
                 </div>
-                <CrossCloseButton onClick={onClick} iconButtonCSS={button} style={css({ marginRight: "18px" })} iconStyle={{ color: "#050505" }} />
+                <CrossCloseButton
+                    onClick={onClick}
+                    iconButtonCSS={button}
+                    style={css({ marginRight: "18px" })}
+                    iconStyle={{ color: colors.primaryIcon }}
+                />
             </div>
             <hr css={divider}></hr>
         </div>

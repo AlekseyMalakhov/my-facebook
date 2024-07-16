@@ -98,7 +98,7 @@ const description = css({
     fontSize: ".9375rem",
     lineHeight: "1.3333",
     fontWeight: 400,
-    color: "#050505",
+    color: colors.primaryText,
 });
 
 const container = css({});

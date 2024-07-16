@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import { AccountIconProps } from "../../../shared/svg/AccountIcon";
 import { SvgIconProps } from "@mui/material";
+import { colors } from "@/shared/cssSettings";
 
 type ImgIcon = {
     type: "sprite" | "img";
@@ -50,7 +51,7 @@ const container2 = css({
 
 const text = css({
     fontFamily: "Segoe UI Semibold",
-    color: "#050505",
+    color: colors.primaryText,
     fontWeight: 500,
     lineHeight: "1.3333",
     fontSize: "0.9375rem",

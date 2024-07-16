@@ -9,7 +9,7 @@ const container = css({
 
 const textContainer = css({
     backgroundColor: "#F0F2F5",
-    color: "#050505",
+    color: colors.primaryText,
     borderRadius: "18px",
     padding: "8px 12px",
     marginLeft: "6px",
@@ -18,7 +18,7 @@ const textContainer = css({
 const rightContainer = css({});
 
 const authorName = css({
-    color: "#050505",
+    color: colors.primaryText,
     fontWeight: 600,
     lineHeight: 1.2308,
     fontSize: ".8125rem",
