@@ -40,6 +40,13 @@ const accountStyle = css({
     cursor: "pointer",
 });
 
+const friendsContainer = css({
+    marginRight: "8px",
+    "@media only screen and (max-width: 1260px)": {
+        display: "none",
+    },
+});
+
 const friendsTab = css({
     color: "#0064D1",
     backgroundColor: "EBF5FF",
@@ -54,7 +61,7 @@ export default function HeaderFeaturesSelector() {
 
     return (
         <div css={container}>
-            <Link to="friends" style={{ marginRight: "8px" }}>
+            <Link to="friends" css={friendsContainer}>
                 <Button variant="contained" css={[button, tab === "friends" ? friendsTab : justTab]} disableElevation>
                     Find friends
                 </Button>
