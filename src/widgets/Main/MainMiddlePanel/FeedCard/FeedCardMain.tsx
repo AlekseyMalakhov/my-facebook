@@ -116,7 +116,7 @@ export default function FeedCardMain({ item, asDialog, showComments }: Props) {
                     cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
                 <div css={image}>
-                    <img src={item.img} style={{ width: "100%" }} />
+                    <img src={item.img} style={{ width: "100%", height: "auto" }} width={1024} height={683} />
                 </div>
                 <div css={footer}>
                     <div css={footerLikes}>
