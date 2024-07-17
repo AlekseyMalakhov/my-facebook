@@ -46,7 +46,7 @@ const formCL = {
 };
 
 export default function LoginSelectGender({ value, handleChange }: Props) {
-    const handle = (event: React.ChangeEvent<HTMLInputElement>, val: string) => {
+    const handle = (_event: React.ChangeEvent<HTMLInputElement>, val: string) => {
         //bug in radio control MUI. Can't pass types directly
         if (val === "female") {
             handleChange(Gender.Female);

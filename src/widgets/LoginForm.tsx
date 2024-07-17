@@ -97,7 +97,7 @@ export default function LoginForm() {
         });
     };
 
-    const closeSignUp = (event: object, reason: string) => {
+    const closeSignUp = (_event: object, reason: string) => {
         if (reason !== "backdropClick") {
             setShowSignUp(false);
         }

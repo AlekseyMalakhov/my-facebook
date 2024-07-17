@@ -29,11 +29,22 @@ export type FeedItem = {
     comments: Comment[];
 };
 
-type Props = {
+interface BaseProps {
+    key?: number;
     item: FeedItem;
-    asDialog?: boolean;
+}
+
+interface PropsAsNormal extends BaseProps {
+    asDialog?: undefined;
+    closeDialogFromParent?: undefined;
+}
+
+interface PropsAsDialog extends BaseProps {
+    asDialog: boolean;
     closeDialogFromParent: () => void;
-};
+}
+
+type Props = PropsAsDialog | PropsAsNormal;
 
 const container = css({
     display: "flex",
@@ -47,7 +58,17 @@ const container = css({
     marginBottom: "16px",
 });
 
-export default function FeedCard({ item, asDialog, closeDialogFromParent }: Props) {
+export default function FeedCard(props: Props) {
+    const item = props.item;
+
+    let asDialog = false;
+    let closeDialogFromParent = () => {};
+
+    if (props.asDialog) {
+        asDialog = props.asDialog;
+        closeDialogFromParent = props.closeDialogFromParent;
+    }
+
     const [showDialog, setShowDialog] = useState(false);
 
     const showComments = () => {

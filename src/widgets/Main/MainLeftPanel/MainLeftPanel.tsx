@@ -40,7 +40,7 @@ export default function MainLeftPanel() {
         },
     };
 
-    const shortList = fullList.filter((item, i) => {
+    const shortList = fullList.filter((_item, i) => {
         if (i < 10) {
             return true;
         }
