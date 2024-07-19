@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import Dialog from "@mui/material/Dialog";
 import TextField from "@mui/material/TextField";
 import { useRef, useState } from "react";
-import LoginSelector from "../features/LoginSelector";
+import LoginSelector from "../features/LoginSelector/LoginSelector";
 import { SelectChangeEvent } from "@mui/material/Select";
 import ShowTooltipButton from "../features/ShowTooltipButton";
 import Popover from "@mui/material/Popover";
