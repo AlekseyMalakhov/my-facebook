@@ -1,8 +1,7 @@
-import { css } from "@emotion/react";
-
-import LikeSmile from "../LikeSmile";
+import LikeSmile from "../../LikeSmile";
 import Popper from "@mui/material/Popper";
 import Fade from "@mui/material/Fade";
+import { popover, emojiPanel } from "./FeedCardLikesPanel.css";
 
 type LikesObj = {
     like: number;
@@ -27,24 +26,6 @@ export type FeedItem = {
     shares: number;
     comments: Comment[];
 };
-
-const emojiPanel = css({
-    display: "flex",
-    alignItems: "center",
-    borderRadius: "23px",
-    position: "relative",
-    width: "329px",
-    border: "1px solid grey",
-    backgroundColor: "white",
-});
-
-const popover = css({
-    zIndex: 1305,
-    "&.MuiPopover-root .MuiPaper-root": {
-        backgroundColor: "transparent",
-        boxShadow: "none",
-    },
-});
 
 type Props = {
     showLikesPanel: boolean;
@@ -85,10 +66,10 @@ const emojis = [
 
 export default function FeedCardLikesPanel({ showLikesPanel, likesButtonEl, setShowLikesPanel }: Props) {
     return (
-        <Popper css={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top-start">
+        <Popper className={popover} open={showLikesPanel} anchorEl={likesButtonEl.current} transition placement="top-start">
             {({ TransitionProps }) => (
                 <Fade {...TransitionProps} timeout={350}>
-                    <div css={emojiPanel} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
+                    <div className={emojiPanel} onMouseEnter={() => setShowLikesPanel(true)} onMouseLeave={() => setShowLikesPanel(false)}>
                         {emojis.map((prop, i) => (
                             <LikeSmile position={prop.position} key={prop.id} i={i} onClick={() => setShowLikesPanel(false)} />
                         ))}
