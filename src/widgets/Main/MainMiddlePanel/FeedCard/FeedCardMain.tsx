@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import FeedCardButton from "./FeedCardButton/FeedCardButton";
 import CommentPanel from "../CommentPanel/CommentPanel";
-import FeedCardHeader from "./FeedCardHeader";
+import FeedCardHeader from "./FeedCardHeader/FeedCardHeader";
 import FeedCardLikesPanel from "./FeedCardLikesPanel";
 import { Fragment, useRef, useState } from "react";
 import { colors } from "@/shared/cssSettings";
