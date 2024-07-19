@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { feed } from "./feed";
-import FeedCard from "./FeedCard/FeedCard";
+import { FeedCard } from "./FeedCard";
 
 const container = css({
     maxWidth: "680px",

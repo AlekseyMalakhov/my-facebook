@@ -1,9 +1,9 @@
-import { css } from "@emotion/react";
 import { useState } from "react";
 import { Dialog } from "@mui/material";
-import FeedCardCommentHeader from "./FeedCardCommentHeader/FeedCardCommentHeader";
+import FeedCardCommentHeader from "../FeedCardCommentHeader/FeedCardCommentHeader";
 import { CustomScroll } from "react-custom-scroll";
-import FeedCardMain from "./FeedCardMain";
+import FeedCardMain from "../FeedCardMain";
+import { container } from "./FeedCard.css";
 
 type LikesObj = {
     like: number;
@@ -46,18 +46,6 @@ interface PropsAsDialog extends BaseProps {
 
 type Props = PropsAsDialog | PropsAsNormal;
 
-const container = css({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "white",
-    borderRadius: "8px",
-    padding: "0 0 12px 0",
-    width: "100%",
-    boxSizing: "border-box",
-    marginBottom: "16px",
-});
-
 export default function FeedCard(props: Props) {
     const item = props.item;
 
@@ -82,7 +70,7 @@ export default function FeedCard(props: Props) {
     };
 
     return (
-        <div css={container}>
+        <div className={container}>
             {asDialog ? <FeedCardCommentHeader name={item.author} onClick={closeDialogFromParent} /> : null}
             {asDialog ? (
                 <CustomScroll heightRelativeToParent="100%">
