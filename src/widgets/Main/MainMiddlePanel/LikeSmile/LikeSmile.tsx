@@ -1,20 +1,10 @@
-import { css } from "@emotion/react";
+import { container } from "./LikeSmile.css";
 
 type Props = {
     position: string;
     i: number;
     onClick?: () => void;
 };
-
-const container = css({
-    position: "relative",
-    cursor: "pointer",
-    transform: "scale(0.8)",
-    "&:hover": {
-        transform: "scale(1)",
-    },
-    transition: "transform 0.2s",
-});
 
 export default function LikeSmile({ position, i, onClick }: Props) {
     const left = (-i * 6).toString() + "px";
@@ -30,7 +20,7 @@ export default function LikeSmile({ position, i, onClick }: Props) {
     };
 
     return (
-        <div css={container} style={contStyle} onClick={onClick}>
+        <div className={container} style={contStyle} onClick={onClick}>
             <div style={iconStyle2}></div>
         </div>
     );

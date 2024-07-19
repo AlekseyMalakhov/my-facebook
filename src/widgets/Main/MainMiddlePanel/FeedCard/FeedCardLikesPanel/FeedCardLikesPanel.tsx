@@ -1,4 +1,4 @@
-import LikeSmile from "../../LikeSmile";
+import LikeSmile from "../../LikeSmile/LikeSmile";
 import Popper from "@mui/material/Popper";
 import Fade from "@mui/material/Fade";
 import { popover, emojiPanel } from "./FeedCardLikesPanel.css";
