@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import Header from "../widgets/Header";
+import Header from "../widgets/Header/Header";
 import Main from "../widgets/Main/Main";
 
 const container = css({
