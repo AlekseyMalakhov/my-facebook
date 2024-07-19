@@ -78,7 +78,7 @@ export default function FeedCardHeader({ item, asDialog }: Props) {
             </div>
             <div css={headerButtons}>
                 <ThreeDotsButton onClick={() => null} />
-                {asDialog ? null : <CrossCloseButton onClick={() => null} style={css({ marginLeft: "5px" })} />}
+                {asDialog ? null : <CrossCloseButton onClick={() => null} style={{ marginLeft: "5px" }} />}
             </div>
         </div>
     );

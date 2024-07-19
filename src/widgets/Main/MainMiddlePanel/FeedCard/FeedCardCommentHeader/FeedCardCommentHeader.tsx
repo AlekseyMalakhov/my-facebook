@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import CrossCloseButton from "@/features/CrossCloseButton";
 import { colors } from "@/shared/cssSettings";
+import { button } from "./FeedCardCommentHeader.css";
 
 const container = css({
     width: "100%",
@@ -33,13 +34,6 @@ const divider = css({
     border: 0,
 });
 
-const button = css({
-    backgroundColor: "#E4E6EB",
-    "&.MuiButtonBase-root.MuiIconButton-root": {
-        padding: 6,
-    },
-});
-
 type Props = {
     name: string;
     onClick: () => void;
@@ -55,7 +49,7 @@ export default function FeedCardCommentHeader({ name, onClick }: Props) {
                 <CrossCloseButton
                     onClick={onClick}
                     iconButtonCSS={button}
-                    style={css({ marginRight: "18px" })}
+                    style={{ marginRight: "18px" }}
                     iconStyle={{ color: colors.primaryIcon }}
                 />
             </div>

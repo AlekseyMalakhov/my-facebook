@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { Dialog } from "@mui/material";
-import FeedCardCommentHeader from "./FeedCardCommentHeader";
+import FeedCardCommentHeader from "./FeedCardCommentHeader/FeedCardCommentHeader";
 import { CustomScroll } from "react-custom-scroll";
 import FeedCardMain from "./FeedCardMain";
 
