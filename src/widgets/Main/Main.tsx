@@ -1,17 +1,11 @@
-import { css } from "@emotion/react";
 import MainLeftPanel from "./MainLeftPanel/MainLeftPanel";
 import MainMiddlePanel from "./MainMiddlePanel/MainMiddlePanel";
 import MainRightPanel from "./MainRightPanel/MainRightPanel";
-
-const container = css({
-    display: "flex",
-    justifyContent: "space-evenly",
-    flex: 1,
-});
+import { container } from "./Main.css";
 
 export default function Main() {
     return (
-        <div css={container}>
+        <div className={container}>
             <MainLeftPanel />
             <MainMiddlePanel />
             <MainRightPanel />
