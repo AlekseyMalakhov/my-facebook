@@ -1,8 +1,7 @@
-import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
-import { AccountIconProps } from "../../../shared/svg/AccountIcon";
+import { AccountIconProps } from "../../../../shared/svg/AccountIcon";
 import { SvgIconProps } from "@mui/material";
-import { colors } from "@/shared/cssSettings";
+import { container, container2, text, iconDiv } from "./ListElement.css";
 
 type ImgIcon = {
     type: "sprite" | "img";
@@ -32,39 +31,6 @@ type Props = {
     item: ListElementType;
 };
 
-const container = css({
-    paddingLeft: "8px",
-    paddingRight: "8px",
-    maxWidth: "360px",
-});
-
-const container2 = css({
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: "8px",
-    paddingRight: "8px",
-    "&:hover": {
-        backgroundColor: "#dddddd",
-        borderRadius: "6px",
-    },
-});
-
-const text = css({
-    fontFamily: "Segoe UI Semibold",
-    color: colors.primaryText,
-    fontWeight: 500,
-    lineHeight: "1.3333",
-    fontSize: "0.9375rem",
-});
-
-const iconDiv = css({
-    width: "36px",
-    height: "36px",
-    marginTop: "8px",
-    marginBottom: "8px",
-    marginRight: "12px",
-});
-
 export default function ListElement({ item }: Props) {
     const { value, title, icon, svgProps } = item;
 
@@ -75,11 +41,11 @@ export default function ListElement({ item }: Props) {
         };
 
         return (
-            <li css={container}>
+            <li className={container}>
                 <Link to={value}>
-                    <div css={container2}>
-                        {icon.type === "sprite" ? <div css={iconDiv} style={iconStyle2}></div> : <img src={icon.url} css={iconDiv} />}
-                        <div css={text}>{title}</div>
+                    <div className={container2}>
+                        {icon.type === "sprite" ? <div className={iconDiv} style={iconStyle2}></div> : <img src={icon.url} className={iconDiv} />}
+                        <div className={text}>{title}</div>
                     </div>
                 </Link>
             </li>
@@ -87,13 +53,13 @@ export default function ListElement({ item }: Props) {
     } else if (icon.type === "icon") {
         const Icon = icon.value;
         return (
-            <li css={container}>
+            <li className={container}>
                 <Link to={value}>
-                    <div css={container2}>
-                        <div css={iconDiv}>
+                    <div className={container2}>
+                        <div className={iconDiv}>
                             <Icon width={36} style={{ borderRadius: "18px" }} />
                         </div>
-                        <div css={text}>{title}</div>
+                        <div className={text}>{title}</div>
                     </div>
                 </Link>
             </li>
@@ -101,13 +67,13 @@ export default function ListElement({ item }: Props) {
     } else if (icon.type === "svg") {
         const Icon = icon.value;
         return (
-            <li css={container}>
+            <li className={container}>
                 <Link to={value}>
-                    <div css={container2}>
-                        <div css={iconDiv}>
+                    <div className={container2}>
+                        <div className={iconDiv}>
                             <Icon width="20" height="20" {...svgProps} />
                         </div>
-                        <div css={text}>{title}</div>
+                        <div className={text}>{title}</div>
                     </div>
                 </Link>
             </li>

@@ -1,4 +1,4 @@
-import ListElement, { ListElementType } from "./ListElement";
+import ListElement, { ListElementType } from "./ListElement/ListElement";
 import AccountIcon from "../../../shared/svg/AccountIcon";
 import { useState } from "react";
 import SeeMoreIcon from "../../../shared/svg/SeeMoreIcon";

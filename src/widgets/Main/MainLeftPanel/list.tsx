@@ -1,4 +1,4 @@
-import { ListElementType } from "./ListElement";
+import { ListElementType } from "./ListElement/ListElement";
 
 export const fullList: ListElementType[] = [
     {
