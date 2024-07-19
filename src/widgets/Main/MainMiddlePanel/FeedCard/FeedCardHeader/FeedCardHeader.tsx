@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PublicGroupIcon from "@/shared/svg/PublicGroupIcon";
 import ThreeDotsButton from "@/features/ThreeDotsButton";
 import CrossCloseButton from "@/features/CrossCloseButton";
-import { FeedItem } from "../FeedCard/FeedCard";
+import { FeedItem } from "../FeedCard";
 import { getMonthDayAtTime } from "@/shared/utils";
 import AccountIcon from "@/shared/svg/AccountIcon";
 import { header, userData, userText, userName, dateDiv, headerButtons } from "./FeedCardHeader.css";

@@ -1,5 +1,5 @@
-import { feed } from "../feed";
-import { FeedCard } from "../FeedCard";
+import { feed } from "./feed";
+import FeedCard from "./FeedCard/FeedCard";
 import { container } from "./MainMiddlePanel.css";
 
 export default function MainMiddlePanel() {
