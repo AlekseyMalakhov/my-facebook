@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import MainLeftPanel from "./MainLeftPanel/MainLeftPanel";
-import MainMiddlePanel from "./MainMiddlePanel/MainMiddlePanel";
+import MainMiddlePanel from "./MainMiddlePanel/MainMiddlePanel/MainMiddlePanel";
 import MainRightPanel from "./MainRightPanel/MainRightPanel";
 
 const container = css({
