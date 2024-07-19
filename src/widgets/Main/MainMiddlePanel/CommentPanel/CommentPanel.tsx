@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { comments } from "./fakeComments";
-import Comment from "./Comment";
+import Comment from "./Comment/Comment";
 
 const container = css({
     width: "100%",
