@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Dialog } from "@mui/material";
 import FeedCardCommentHeader from "../FeedCardCommentHeader/FeedCardCommentHeader";
 import { CustomScroll } from "react-custom-scroll";
-import FeedCardMain from "../FeedCardMain";
+import FeedCardMain from "../FeedCardMain/FeedCardMain";
 import { container } from "./FeedCard.css";
 
 type LikesObj = {
