@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import FeedCardButton from "./FeedCardButton";
+import FeedCardButton from "./FeedCardButton/FeedCardButton";
 import CommentPanel from "../CommentPanel/CommentPanel";
 import FeedCardHeader from "./FeedCardHeader";
 import FeedCardLikesPanel from "./FeedCardLikesPanel";
