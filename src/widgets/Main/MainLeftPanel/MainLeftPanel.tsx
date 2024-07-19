@@ -1,18 +1,9 @@
-import { css } from "@emotion/react";
 import ListElement, { ListElementType } from "./ListElement";
 import AccountIcon from "../../../shared/svg/AccountIcon";
 import { useState } from "react";
 import SeeMoreIcon from "../../../shared/svg/SeeMoreIcon";
 import { fullList } from "./list";
-
-const container = css({
-    flex: 1,
-    marginTop: "16px",
-    marginBottom: "30px",
-    "@media only screen and (max-width: 1100px)": {
-        display: "none",
-    },
-});
+import { container } from "./MainLeftPanel.css";
 
 export default function MainLeftPanel() {
     const [seeMore, setSeeMore] = useState(false);
@@ -55,7 +46,7 @@ export default function MainLeftPanel() {
     };
 
     return (
-        <ul css={container}>
+        <ul className={container}>
             <ListElement item={account} />
             {seeMore
                 ? fullList.map((item) => <ListElement item={item} key={item.id} />)
