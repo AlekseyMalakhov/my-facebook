@@ -4,7 +4,7 @@ import ThreeDotsButton from "@/features/ThreeDotsButton";
 import CrossCloseButton from "@/features/CrossCloseButton";
 import { FeedItem } from "../FeedCard";
 import { getMonthDayAtTime } from "@/shared/utils";
-import AccountIcon from "@/shared/svg/AccountIcon";
+import AccountIcon from "@/shared/svg/AccountIcon/AccountIcon";
 import { header, userData, userText, userName, dateDiv, headerButtons } from "./FeedCardHeader.css";
 
 type Props = {

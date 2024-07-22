@@ -1,4 +1,4 @@
-import AccountIcon from "@/shared/svg/AccountIcon";
+import AccountIcon from "@/shared/svg/AccountIcon/AccountIcon";
 import { colors } from "@/shared/cssSettings";
 import { container, textContainer, rightContainer, authorName, text, panel, option } from "./Comment.css";
 

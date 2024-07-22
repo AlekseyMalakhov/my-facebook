@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "../../../shared/svg/MenuIcon";
 import MessengerIcon from "../../../shared/svg/MessengerIcon";
-import AccountIcon from "../../../shared/svg/AccountIcon";
+import AccountIcon from "../../../shared/svg/AccountIcon/AccountIcon";
 import { container, button, menu, accountStyle, friendsContainer, friendsTab, justTab } from "./HeaderFeaturesSelector.css";
 
 export default function HeaderFeaturesSelector() {

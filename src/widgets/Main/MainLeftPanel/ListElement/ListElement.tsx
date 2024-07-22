@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AccountIconProps } from "../../../../shared/svg/AccountIcon";
+import { AccountIconProps } from "../../../../shared/svg/AccountIcon/AccountIcon";
 import { SvgIconProps } from "@mui/material";
 import { container, container2, text, iconDiv } from "./ListElement.css";
 

@@ -1,5 +1,5 @@
 import ListElement, { ListElementType } from "./ListElement/ListElement";
-import AccountIcon from "../../../shared/svg/AccountIcon";
+import AccountIcon from "../../../shared/svg/AccountIcon/AccountIcon";
 import { useState } from "react";
 import SeeMoreIcon from "../../../shared/svg/SeeMoreIcon";
 import { fullList } from "./list";
