@@ -1,6 +1,6 @@
 import Search from "../../features/Search";
 import HeaderTabSelector from "../HeaderTabSelector";
-import HeaderFeaturesSelector from "../HeaderFeaturesSelector";
+import HeaderFeaturesSelector from "./HeaderFeaturesSelector/HeaderFeaturesSelector";
 import { container, left } from "./Header.css";
 
 export default function Header() {
