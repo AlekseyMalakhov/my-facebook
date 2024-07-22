@@ -6,12 +6,5 @@ import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [
-        react({
-            jsxImportSource: "@emotion/react",
-        }),
-        tsconfigPaths(),
-        viteCompression({ algorithm: "brotliCompress" }),
-        vanillaExtractPlugin(),
-    ],
+    plugins: [react(), tsconfigPaths(), viteCompression({ algorithm: "brotliCompress" }), vanillaExtractPlugin()],
 });
