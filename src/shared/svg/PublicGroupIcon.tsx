@@ -1,14 +1,8 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
-import { css } from "@emotion/react";
-
-const icon = css({
-    width: "initial",
-    height: "initial",
-});
 
 export default function PublicGroupIcon(props: SvgIconProps) {
     return (
-        <SvgIcon {...props} css={icon}>
+        <SvgIcon {...props}>
             <g fillRule="evenodd" transform="translate(-448 -544)">
                 <g>
                     <path

@@ -32,7 +32,7 @@ export default function FeedCardHeader({ item, asDialog }: Props) {
                     <div className={dateDiv}>
                         {date}
                         <span>&nbsp;·&nbsp;</span>
-                        <PublicGroupIcon width={12} height={12} viewBox="0 0 16 16" />
+                        <PublicGroupIcon sx={{ width: "12px", height: "12px" }} viewBox="0 0 16 16" />
                     </div>
                 </div>
             </div>
