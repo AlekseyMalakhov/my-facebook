@@ -3,7 +3,7 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import SignUpForm from "../SignUpForm";
+import SignUpForm from "../SignUpForm/SignUpForm";
 import { useMutation } from "@apollo/client";
 import { RegDeviceType } from "../../gql/graphql";
 import Backdrop from "@mui/material/Backdrop";

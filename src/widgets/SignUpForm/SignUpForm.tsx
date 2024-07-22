@@ -1,119 +1,41 @@
-import { css } from "@emotion/react";
 import Dialog from "@mui/material/Dialog";
 import TextField from "@mui/material/TextField";
 import { useRef, useState } from "react";
-import { LoginSelector } from "../features/LoginSelector";
+import { LoginSelector } from "../../features/LoginSelector";
 import { SelectChangeEvent } from "@mui/material/Select";
-import ShowTooltipButton from "../features/ShowTooltipButton";
+import ShowTooltipButton from "../../features/ShowTooltipButton";
 import Popover from "@mui/material/Popover";
-import CrossCloseButton from "../features/CrossCloseButton";
-import LoginSelectGender from "../features/LoginSelectGender";
+import CrossCloseButton from "../../features/CrossCloseButton";
+import LoginSelectGender from "../../features/LoginSelectGender";
 import Button from "@mui/material/Button";
 import { useMutation } from "@apollo/client";
-import { ADD_USER_MUTATION } from "../shared/api/queries/mutations";
-import { Gender, RegDeviceType } from "../gql/graphql";
+import { ADD_USER_MUTATION } from "../../shared/api/queries/mutations";
+import { Gender, RegDeviceType } from "../../gql/graphql";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Link } from "react-router-dom";
-import { colors } from "@/shared/cssSettings";
+
+import {
+    container,
+    name,
+    header,
+    helpText,
+    selectors,
+    separator,
+    form,
+    birthday,
+    title,
+    link,
+    link2,
+    notification,
+    signUpButton,
+    signUpButtonContainer,
+} from "./SignUpForm.css";
 
 type Props = {
     handleClose: (event: object, reason: string) => void;
     open: boolean;
 };
-
-const container = css({
-    width: "432px",
-});
-
-const name = css({
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "10px",
-});
-
-const header = css({
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "10px 16px",
-});
-
-const separator = css({
-    borderBottom: "1px solid #dadde1",
-});
-
-const form = css({
-    padding: "16px",
-});
-
-const birthday = css({
-    marginTop: "10px",
-});
-
-const title = css({
-    fontSize: "12px",
-    color: "#606770",
-    display: "flex",
-    alignItems: "center",
-});
-
-const selectors = css({
-    display: "flex",
-    justifyContent: "space-between",
-});
-
-const helpText = css({
-    width: "340px",
-    padding: "12px",
-    color: colors.secondaryText,
-    fontSize: "13px",
-});
-
-const link = css({
-    color: "#0866ff",
-    fontSize: "13px",
-    textDecoration: "none",
-    "&:hover": {
-        textDecoration: "underline",
-    },
-});
-
-const link2 = css({
-    color: "#385898",
-    fontSize: "11px",
-    textDecoration: "none",
-    "&:hover": {
-        textDecoration: "underline",
-    },
-});
-
-const notification = css({
-    fontSize: "11px",
-    marginTop: "20px",
-    color: "#777",
-});
-
-const signUpButton = css({
-    backgroundColor: "#00a400",
-    height: "36px",
-    fontSize: "18px",
-    padding: "0 32px",
-    "&:hover": {
-        background: "linear-gradient(#79bc64, #578843)",
-    },
-    textTransform: "none",
-    fontWeight: "bold",
-    width: "194px",
-    marginTop: "10px",
-    marginBottom: "10px",
-});
-
-const signUpButtonContainer = css({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: "10px",
-});
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const days: number[] = [];
@@ -214,17 +136,17 @@ export default function SignUpForm({ handleClose, open }: Props) {
 
     return (
         <Dialog onClose={handleClose} open={open}>
-            <div css={container}>
-                <div css={header}>
+            <div className={container}>
+                <div className={header}>
                     <div>
                         <div style={{ fontSize: "32px", fontWeight: 600, lineHeight: "38px" }}>Sign Up</div>
                         <div style={{ fontSize: "15px", color: "#606770", lineHeight: "24px" }}>It’s quick and easy.</div>
                     </div>
                     <CrossCloseButton onClick={handleClose} />
                 </div>
-                <div css={separator}></div>
-                <div css={form}>
-                    <div css={name}>
+                <div className={separator}></div>
+                <div className={form}>
+                    <div className={name}>
                         <TextField
                             value={firstName}
                             label="First name"
@@ -243,19 +165,19 @@ export default function SignUpForm({ handleClose, open }: Props) {
                         />
                     </div>
 
-                    <div css={birthday}>
-                        <div css={title} ref={helpBirthdayEl}>
+                    <div className={birthday}>
+                        <div className={title} ref={helpBirthdayEl}>
                             <span style={{ paddingTop: "4px" }}>Birthday</span>
                             <ShowTooltipButton onClick={toggleHelpBirthday} />
                         </div>
-                        <div css={selectors}>
+                        <div className={selectors}>
                             <LoginSelector label="Month" handleChange={changeMonth} items={months} value={month} />
                             <LoginSelector label="Day" handleChange={changeDay} items={days} value={day} />
                             <LoginSelector label="Year" handleChange={changeYear} items={years} value={year} />
                         </div>
                     </div>
-                    <div css={birthday}>
-                        <div css={title} ref={helpGenderEl}>
+                    <div className={birthday}>
+                        <div className={title} ref={helpGenderEl}>
                             <span style={{ paddingTop: "4px" }}>Gender</span>
                             <ShowTooltipButton onClick={toggleHelpGender} />
                         </div>
@@ -279,31 +201,31 @@ export default function SignUpForm({ handleClose, open }: Props) {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <div css={notification}>
+                    <div className={notification}>
                         <div style={{ marginBottom: "10px" }}>
                             <span>People who use our service may have uploaded your contact information to Facebook. </span>
-                            <Link to="#" css={link2}>
+                            <Link to="#" className={link2}>
                                 Learn more...
                             </Link>
                         </div>
                         <div>
                             <span>By clicking Sign Up, you agree to our </span>
-                            <Link to="#" css={link2}>
+                            <Link to="#" className={link2}>
                                 Terms
                             </Link>
                             <span>, </span>
-                            <Link to="#" css={link2}>
+                            <Link to="#" className={link2}>
                                 Privacy Policy
                             </Link>
                             <span> and </span>
-                            <Link to="#" css={link2}>
+                            <Link to="#" className={link2}>
                                 Cookies Policy
                             </Link>
                             <span>. You may receive SMS Notifications from us and can opt out any time.</span>
                         </div>
                     </div>
-                    <div css={signUpButtonContainer}>
-                        <Button variant="contained" css={signUpButton} onClick={signUp}>
+                    <div className={signUpButtonContainer}>
+                        <Button variant="contained" className={signUpButton} onClick={signUp}>
                             Sign Up
                         </Button>
                     </div>
@@ -322,13 +244,13 @@ export default function SignUpForm({ handleClose, open }: Props) {
                     horizontal: "right",
                 }}
             >
-                <div css={helpText}>
+                <div className={helpText}>
                     <span>
                         <b>Providing your birthday</b> helps make sure you get the right Facebook experience for your age. If you want to change who
                         sees this, go to the About section of your profile.
                     </span>
                     <span> For more details, please visit our </span>
-                    <Link to="https://www.facebook.com/privacy/explanation" css={link}>
+                    <Link to="https://www.facebook.com/privacy/explanation" className={link}>
                         Privacy Policy
                     </Link>
                     .
@@ -347,7 +269,7 @@ export default function SignUpForm({ handleClose, open }: Props) {
                     horizontal: "right",
                 }}
             >
-                <div css={helpText}>
+                <div className={helpText}>
                     You can change who sees your gender on your profile later. Select Custom to choose another gender, or if you'd rather not say.
                 </div>
             </Popover>
