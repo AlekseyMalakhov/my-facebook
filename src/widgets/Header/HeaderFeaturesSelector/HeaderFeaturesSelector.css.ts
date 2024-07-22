@@ -25,14 +25,18 @@ export const button = style({
     },
 });
 
-export const menu = style({
+export const menu = {
     backgroundColor: "#E4E6EB",
     width: "40px",
     height: "40px",
     marginRight: "8px",
-});
+};
 
 export const accountStyle = style({
+    backgroundColor: "#E4E6EB",
+    width: "40px",
+    height: "40px",
+    marginRight: "8px",
     borderRadius: "20px",
     cursor: "pointer",
 });
