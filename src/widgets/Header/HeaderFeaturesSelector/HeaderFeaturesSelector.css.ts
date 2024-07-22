@@ -1,4 +1,4 @@
-import { style, globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
 export const container = style({
     display: "flex",
@@ -46,16 +46,20 @@ export const friendsContainer = style({
     },
 });
 
-export const friendsTab = style({});
-
-globalStyle(`${friendsTab}.MuiButtonBase-root`, {
-    color: "#0064D1",
-    backgroundColor: "EBF5FF",
+export const friendsTab = style({
+    selectors: {
+        "&.MuiButtonBase-root": {
+            color: "#0064D1",
+            backgroundColor: "EBF5FF",
+        },
+    },
 });
 
-export const justTab = style({});
-
-globalStyle(`${justTab}.MuiButtonBase-root`, {
-    color: "#1c1e21",
-    backgroundColor: "#E4E6EB",
+export const justTab = style({
+    selectors: {
+        "&.MuiButtonBase-root": {
+            color: "#1c1e21",
+            backgroundColor: "#E4E6EB",
+        },
+    },
 });
