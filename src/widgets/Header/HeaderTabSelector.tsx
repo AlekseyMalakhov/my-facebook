@@ -3,7 +3,7 @@ import HomeIcon from "../../shared/svg/HomeIcon";
 import FriendsIcon from "../../shared/svg/FriendsIcon";
 import GroupsIcon from "../../shared/svg/GroupsIcon";
 import { useParams } from "react-router-dom";
-import HeaderTabLink from "./HeaderTabLink";
+import HeaderTabLink from "./HeaderTabLink/HeaderTabLink";
 
 const container = css({
     display: "flex",
