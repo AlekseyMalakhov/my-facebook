@@ -1,72 +1,16 @@
-import { css } from "@emotion/react";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import SignUpForm from "./SignUpForm";
+import SignUpForm from "../SignUpForm";
 import { useMutation } from "@apollo/client";
-import { RegDeviceType } from "../gql/graphql";
+import { RegDeviceType } from "../../gql/graphql";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
-import { LOGIN_MUTATION } from "../shared/api/queries/mutations";
-
-const paper = css({
-    width: "396px",
-    "&.MuiPaper-rounded": {
-        borderRadius: "5px",
-    },
-});
-
-const container = css({
-    padding: "15px",
-    textAlign: "center",
-});
-
-const loginButton = css({
-    height: "48px",
-    borderRadius: "8px",
-    backgroundColor: "#0866ff",
-    fontSize: "20px",
-    textTransform: "none",
-    fontWeight: 700,
-    marginTop: "5px",
-});
-
-const link = css({
-    color: "#0866ff",
-    fontSize: "14px",
-    textDecoration: "none",
-    "&:hover": {
-        textDecoration: "underline",
-    },
-});
-
-const link2 = css({
-    color: "black",
-    fontWeight: 600,
-    textDecoration: "none",
-    "&:hover": {
-        textDecoration: "underline",
-    },
-});
-
-const separator = css({
-    borderBottom: "1px solid #dadde1",
-    margin: "20px 0px",
-});
-
-const createButton = css({
-    height: "48px",
-    borderRadius: "6px",
-    backgroundColor: "#42b72a",
-    fontSize: "17px",
-    textTransform: "none",
-    fontWeight: 700,
-    marginTop: "5px",
-    marginBottom: "10px",
-});
+import { LOGIN_MUTATION } from "../../shared/api/queries/mutations";
+import { paper, container, loginButton, link, link2, separator, createButton } from "./LoginForm.css";
 
 export default function LoginForm() {
     const navigate = useNavigate();
@@ -105,8 +49,8 @@ export default function LoginForm() {
 
     return (
         <div>
-            <Paper css={paper} elevation={3}>
-                <div css={container}>
+            <Paper className={paper} elevation={3}>
+                <div className={container}>
                     <TextField
                         label="Email or phone number"
                         variant="outlined"
@@ -124,22 +68,22 @@ export default function LoginForm() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button variant="contained" fullWidth css={loginButton} onClick={handleLogin}>
+                    <Button variant="contained" fullWidth className={loginButton} onClick={handleLogin}>
                         Log In
                     </Button>
                     <div style={{ marginTop: "16px", textAlign: "center" }}>
-                        <Link to="#" css={link}>
+                        <Link to="#" className={link}>
                             Forgot password?
                         </Link>
                     </div>
-                    <div css={separator}></div>
-                    <Button variant="contained" css={createButton} onClick={() => setShowSignUp(true)}>
+                    <div className={separator}></div>
+                    <Button variant="contained" className={createButton} onClick={() => setShowSignUp(true)}>
                         Create new account
                     </Button>
                 </div>
             </Paper>
             <div style={{ marginTop: "28px", fontSize: "14px", textAlign: "center" }}>
-                <Link to="#" css={link2}>
+                <Link to="#" className={link2}>
                     Create a Page
                 </Link>
                 <span> for a celebrity, brand or business.</span>

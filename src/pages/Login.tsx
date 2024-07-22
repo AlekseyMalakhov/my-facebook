@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import LoginForm from "../widgets/LoginForm";
+import LoginForm from "../widgets/LoginForm/LoginForm";
 
 const container = css({
     display: "flex",
