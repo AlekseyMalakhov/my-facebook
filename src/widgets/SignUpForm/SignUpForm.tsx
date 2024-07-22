@@ -6,7 +6,7 @@ import { SelectChangeEvent } from "@mui/material/Select";
 import ShowTooltipButton from "../../features/ShowTooltipButton";
 import Popover from "@mui/material/Popover";
 import CrossCloseButton from "../../features/CrossCloseButton";
-import LoginSelectGender from "../../features/LoginSelectGender";
+import LoginSelectGender from "../../features/LoginSelectGender/LoginSelectGender";
 import Button from "@mui/material/Button";
 import { useMutation } from "@apollo/client";
 import { ADD_USER_MUTATION } from "../../shared/api/queries/mutations";

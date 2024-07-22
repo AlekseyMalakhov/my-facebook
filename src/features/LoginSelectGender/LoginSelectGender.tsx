@@ -1,48 +1,13 @@
-import { css } from "@emotion/react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-//export type Gender = "female" | "male" | "other";
-import { Gender } from "../gql/graphql";
+import { Gender } from "../../gql/graphql";
+import { container, button, selectors, radioGr, formCL } from "./LoginSelectGender.css";
+
 type Props = {
     value: Gender;
     handleChange: (value: Gender) => void;
-};
-
-const container = css({});
-
-const button = css({
-    border: "1px solid #ccd0d5",
-    borderRadius: "4px",
-    flex: 1,
-    marginLeft: "13px",
-    display: "flex",
-});
-
-const selectors = css({
-    display: "flex",
-    justifyContent: "space-between",
-    flex: 1,
-});
-
-const radioGr = {
-    "&.MuiRadioGroup-root": {
-        flex: 1,
-    },
-};
-
-const formCL = {
-    "&.MuiFormControlLabel-root": {
-        flex: 1,
-        display: "flex",
-        justifyContent: "space-between",
-        marginLeft: "0px",
-        marginRight: "0px",
-    },
-    "& .MuiFormControlLabel-label": {
-        paddingLeft: "9px",
-    },
 };
 
 export default function LoginSelectGender({ value, handleChange }: Props) {
@@ -57,10 +22,10 @@ export default function LoginSelectGender({ value, handleChange }: Props) {
         if (val === "other") {
             handleChange(Gender.Other);
         }
-        console.log(val);
+        //console.log(val);
     };
     return (
-        <div css={container}>
+        <div className={container}>
             <FormControl fullWidth>
                 <RadioGroup
                     sx={radioGr}
@@ -71,14 +36,14 @@ export default function LoginSelectGender({ value, handleChange }: Props) {
                     value={value}
                     onChange={handle}
                 >
-                    <div css={selectors}>
-                        <div css={button} style={{ marginLeft: "0px" }}>
+                    <div className={selectors}>
+                        <div className={button} style={{ marginLeft: "0px" }}>
                             <FormControlLabel value={Gender.Female} control={<Radio />} label="Female" labelPlacement="start" sx={formCL} />
                         </div>
-                        <div css={button}>
+                        <div className={button}>
                             <FormControlLabel value={Gender.Male} control={<Radio />} label="Male" labelPlacement="start" sx={formCL} />
                         </div>
-                        <div css={button}>
+                        <div className={button}>
                             <FormControlLabel value={Gender.Other} control={<Radio />} label="Other" labelPlacement="start" sx={formCL} />
                         </div>
                     </div>
