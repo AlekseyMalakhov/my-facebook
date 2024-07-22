@@ -1,7 +1,7 @@
 import ListElement, { ListElementType } from "./ListElement/ListElement";
 import AccountIcon from "../../../shared/svg/AccountIcon/AccountIcon";
 import { useState } from "react";
-import SeeMoreIcon from "../../../shared/svg/SeeMoreIcon";
+import SeeMoreIcon from "../../../shared/svg/SeeMoreIcon/SeeMoreIcon";
 import { fullList } from "./list";
 import { container } from "./MainLeftPanel.css";
 

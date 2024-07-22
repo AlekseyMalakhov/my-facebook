@@ -1,25 +1,10 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
-import { css } from "@emotion/react";
-
-const icon = css({
-    width: "initial",
-    height: "initial",
-});
-
-const container = css({
-    backgroundColor: "#E4E6EB",
-    borderRadius: "50%",
-    width: "36px",
-    height: "36px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-});
+import { container } from "./SeeMoreIcon.css";
 
 export default function SeeMoreIcon(props: SvgIconProps) {
     return (
-        <div css={container}>
-            <SvgIcon {...props} css={icon}>
+        <div className={container}>
+            <SvgIcon {...props}>
                 <g fillRule="evenodd" transform="translate(-448 -544)">
                     <path
                         fillRule="nonzero"
