@@ -1,4 +1,4 @@
-import Search from "../../features/Search";
+import Search from "../../features/Search/Search";
 import HeaderTabSelector from "./HeaderTabSelector/HeaderTabSelector";
 import HeaderFeaturesSelector from "./HeaderFeaturesSelector/HeaderFeaturesSelector";
 import { container, left } from "./Header.css";
