@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import { useRef, useState } from "react";
 import { LoginSelector } from "../../features/LoginSelector";
 import { SelectChangeEvent } from "@mui/material/Select";
-import ShowTooltipButton from "../../features/ShowTooltipButton";
+import ShowTooltipButton from "../../features/ShowTooltipButton/ShowTooltipButton";
 import Popover from "@mui/material/Popover";
 import CrossCloseButton from "../../features/CrossCloseButton";
 import LoginSelectGender from "../../features/LoginSelectGender/LoginSelectGender";
