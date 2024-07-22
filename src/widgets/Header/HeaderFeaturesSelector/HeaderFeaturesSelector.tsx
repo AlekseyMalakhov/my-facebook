@@ -17,10 +17,10 @@ export default function HeaderFeaturesSelector() {
                 </Button>
             </Link>
             <IconButton aria-label="menu" sx={menu}>
-                <MenuIcon width={20} height={20} sx={{ color: "#1c1e21", width: "initial", height: "initial" }} />
+                <MenuIcon sx={{ color: "#1c1e21", width: 20, height: 20 }} />
             </IconButton>
             <IconButton aria-label="messenger" sx={menu}>
-                <MessengerIcon width={22} height={22} sx={{ color: "#1c1e21", width: "initial", height: "initial" }} />
+                <MessengerIcon sx={{ color: "#1c1e21", width: 22, height: 22 }} />
             </IconButton>
             <div aria-label="account" className={accountStyle}>
                 <AccountIcon width={40} />
