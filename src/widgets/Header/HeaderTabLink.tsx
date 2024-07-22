@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
-import { MyIconProps } from "../shared/svg/HomeIcon";
+import { MyIconProps } from "../../shared/svg/HomeIcon";
 import { colors } from "@/shared/cssSettings";
 
 const selectedColor = { color: "#0866FF" };
